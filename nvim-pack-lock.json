@@ -30,6 +30,10 @@
       "src": "https://github.com/godlygeek/tabular",
       "version": "'12437cd1b53488e24936ec4b091c9324cafee311'"
     },
+    "telescope.nvim": {
+      "rev": "ec009610d5d259ec59a6edf0219ef3f7ee4732e5",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
     "vim-abolish": {
       "rev": "dcbfe065297d31823561ba787f51056c147aa682",
       "src": "https://github.com/tpope/vim-abolish",

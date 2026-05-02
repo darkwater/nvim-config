@@ -1,17 +1,14 @@
 -- sign column
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.cursorline = true
-vim.o.shiftround = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 -- indent settings
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.shiftround = true
 
 -- window management
-vim.o.splitright = true
-vim.o.splitbelow = true
-
--- very vim stuff
-vim.o.hidden = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
