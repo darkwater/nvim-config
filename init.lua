@@ -1,1 +1,1 @@
-require("dark-config")
+require("dark-config").setup()
