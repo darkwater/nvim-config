@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "copilot.vim": {
+      "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
+      "src": "https://github.com/github/copilot.vim"
+    },
     "neo-tree.nvim": {
       "rev": "19d20a99bf0061a5ecc4343d2f09fa713306c965",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
@@ -12,6 +16,10 @@
     "nui.nvim": {
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
       "src": "https://github.com/muniftanjim/nui.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
