@@ -30,9 +30,17 @@
       "src": "https://github.com/godlygeek/tabular",
       "version": "'12437cd1b53488e24936ec4b091c9324cafee311'"
     },
+    "telescope-hierarchy.nvim": {
+      "rev": "85fb67112daf99f3918531558ee85a36c1891f91",
+      "src": "https://github.com/jmacadie/telescope-hierarchy.nvim"
+    },
     "telescope.nvim": {
       "rev": "ec009610d5d259ec59a6edf0219ef3f7ee4732e5",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "tiny-inline-diagnostic.nvim": {
+      "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",
+      "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "vim-abolish": {
       "rev": "dcbfe065297d31823561ba787f51056c147aa682",
@@ -68,6 +76,11 @@
       "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
       "src": "https://github.com/tpope/vim-surround",
       "version": "'3d188ed2113431cf8dac77be61b842acb64433d9'"
+    },
+    "which-key.nvim": {
+      "rev": "fcbf4eea17cb299c02557d576f0d568878e354a4",
+      "src": "https://github.com/folke/which-key.nvim",
+      "version": "'fcbf4eea17cb299c02557d576f0d568878e354a4'"
     }
   }
 }
