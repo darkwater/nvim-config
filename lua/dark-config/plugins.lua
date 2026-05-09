@@ -29,24 +29,29 @@ vim.pack.add {
 
 if vim.env.USER ~= "root" then
     vim.pack.add {
-        github "github/copilot.vim",
-        github "nvim-neo-tree/neo-tree.nvim",
-        github "nvim-telescope/telescope.nvim",
-        github "jmacadie/telescope-hierarchy.nvim",
+        --- dependencies
+        github "muniftanjim/nui.nvim",  -- neo-tree
+        github "nvim-lua/plenary.nvim", -- neo-tree, telescope
+        github "saghen/blink.lib",      -- blink
+        --- end of dependencies
+
+        github "github/copilot.vim",                -- ai autocomplete
+        github "nvim-neo-tree/neo-tree.nvim",       -- file sidebar
+        github "nvim-telescope/telescope.nvim",     -- pickers
+        github "jmacadie/telescope-hierarchy.nvim", -- call hierarchy
+        github "saghen/blink.cmp",                  -- completion framework
+        github "lewis6991/gitsigns.nvim",           -- git indicators in the gutter
+        github "lewis6991/satellite.nvim",          -- decorated scrollbars
 
         -- lsp
         github "neovim/nvim-lspconfig",
         github "rachartier/tiny-inline-diagnostic.nvim",
-
-        -- dependencies
-        github "muniftanjim/nui.nvim", -- neo-tree
-        github "nvim-lua/plenary.nvim", -- neo-tree, telescope
     }
 end
 
 --------------------------------------------------------------------------------
 -- turn the github links above into hyperlinks :3
--- (chatgpt did this first try)
+-- (chatgpt did this first try) (but i've changed it since)
 local ns = vim.api.nvim_create_namespace("github-links")
 vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
     pattern = "*/dark-config/plugins.lua",
@@ -61,7 +66,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
                 local user_end = line:find("/", s, true)
 
                 -- make the url
-                ---@diagnostic disable-next-line: param-type-mismatch
                 vim.api.nvim_buf_set_extmark(ev.buf, ns, lnum - 1, repo_start, {
                     end_col = repo_end,
                     url = github(repo),
@@ -69,7 +73,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
                 })
 
                 -- lowlight the username
-                ---@diagnostic disable-next-line: param-type-mismatch
                 vim.api.nvim_buf_set_extmark(ev.buf, ns, lnum - 1, repo_start, {
                     end_col = user_end,
                     hl_group = "Comment",

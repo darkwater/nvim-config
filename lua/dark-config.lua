@@ -17,7 +17,10 @@ function M.setup()
     if vim.env.USER ~= "root" then
         require("dark-config.lsp.rust")
         require("dark-config.lsp.lua")
+        require("dark-config.plugins.completion")
+        require("dark-config.plugins.lsp")
         require("dark-config.plugins.neotree")
+        require("dark-config.plugins.satellite")
     end
 end
 
