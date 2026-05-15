@@ -43,4 +43,19 @@ M.jump_diagnostic = function(count)
     end
 end
 
+--- Revert plugins back to versions specified in lockfile
+M.pack_update_lockfile = function()
+    vim.pack.update(nil, { target = "lockfile" })
+end
+
+--- Remove inactive plugins from disk
+M.pack_clean = function()
+    local inactive = vim.iter(vim.pack.get())
+        :filter(function(p) return not p.active end)
+        :map(function(p) return p.spec.name end)
+        :totable()
+
+    vim.pack.del(inactive)
+end
+
 return M

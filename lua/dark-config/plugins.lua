@@ -42,6 +42,7 @@ if vim.env.USER ~= "root" then
         github "saghen/blink.cmp",                  -- completion framework
         github "lewis6991/gitsigns.nvim",           -- git indicators in the gutter
         github "lewis6991/satellite.nvim",          -- decorated scrollbars
+        github "folke/snacks.nvim",                 -- whole bunch of ui stuff
 
         -- lsp
         github "neovim/nvim-lspconfig",

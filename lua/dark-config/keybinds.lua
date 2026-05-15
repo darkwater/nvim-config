@@ -52,4 +52,9 @@ wk.add {
     { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config..." },
     { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config..." },
     { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open Neovim config..." },
+
+    { "<leader>P",  group = "plugins" },
+    { "<leader>Pu", vim.pack.update,          desc = "Update plugins" },
+    { "<leader>Pr", dsp.pack_update_lockfile, desc = "Revert plugins to lockfile" },
+    { "<leader>Pc", dsp.pack_clean,           desc = "Remove unused plugins" },
 }
