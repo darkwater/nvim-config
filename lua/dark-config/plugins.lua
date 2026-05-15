@@ -1,3 +1,5 @@
+local fn = require("dark-config.functions")
+
 ---@param repo string
 ---@return string
 local function github(repo) return "https://github.com/" .. repo end
@@ -27,7 +29,7 @@ vim.pack.add {
     { src = github "folke/which-key.nvim", version = "fcbf4eea17cb299c02557d576f0d568878e354a4" },
 }
 
-if vim.env.USER ~= "root" then
+if fn.unlimited_config() then
     vim.pack.add {
         --- dependencies
         github "muniftanjim/nui.nvim",  -- neo-tree

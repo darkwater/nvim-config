@@ -2,16 +2,7 @@
 
 local M = {}
 
-local telescope = require("telescope.builtin")
-
-M.open_terminal = function()
-    if vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY then
-        vim.system(
-            { "kitty", "--directory", vim.fn.getcwd() },
-            { detach = true }
-        )
-    end
-end
+local fn = require("dark-config.functions")
 
 M.goto_definition = function()
     local lsp_support = vim.iter(vim.lsp.get_clients()):any(function (v)
@@ -19,19 +10,13 @@ M.goto_definition = function()
     end)
 
     if lsp_support then
-        -- vim.lsp.buf.definition()
-        telescope.lsp_definitions()
+        if fn.unlimited_config() then
+            require("telescope.builtin").lsp_definitions()
+        else
+            vim.lsp.buf.definition()
+        end
     else
         vim.cmd("normal! gd")
-    end
-end
-
---- Open Telescope in this directory
----@param dir string directory to pick files in
----@return function
-M.file_picker_in = function(dir)
-    return function ()
-        telescope.find_files { cwd = dir }
     end
 end
 
@@ -56,6 +41,28 @@ M.pack_clean = function()
         :totable()
 
     vim.pack.del(inactive)
+end
+
+if fn.unlimited_config() then
+    local telescope = require("telescope.builtin")
+
+    M.open_terminal = function()
+        if vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY then
+            vim.system(
+                { "kitty", "--directory", vim.fn.getcwd() },
+                { detach = true }
+            )
+        end
+    end
+
+    --- Open Telescope in this directory
+    ---@param dir string directory to pick files in
+    ---@return function
+    M.file_picker_in = function(dir)
+        return function ()
+            telescope.find_files { cwd = dir }
+        end
+    end
 end
 
 return M

@@ -1,5 +1,9 @@
 local M = {}
 
+M.unlimited_config = function()
+    return vim.env.USER ~= "root"
+end
+
 --- Return ~/.config/{app} or ~/.config when app is empty
 ---@param app string? name of the app to get config path for
 ---@return string path to the config directory

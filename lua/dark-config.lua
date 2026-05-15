@@ -15,7 +15,7 @@ function M.setup()
         require("dark-config.neovide")
     end
 
-    if vim.env.USER ~= "root" then
+    if require("dark-config.functions").unlimited_config() then
         require("dark-config.lsp.rust")
         require("dark-config.lsp.lua")
         require("dark-config.plugins.snacks")
