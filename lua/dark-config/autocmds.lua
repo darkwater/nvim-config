@@ -31,3 +31,13 @@ vim.api.nvim_create_autocmd("FileType", {
         )
     end,
 })
+
+-- format some types of buffers on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.rs" },
+    callback = function()
+        if fn.any_lsp_supports_method("textDocument/formatting") then
+            vim.lsp.buf.format()
+        end
+    end,
+})

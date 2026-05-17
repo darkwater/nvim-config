@@ -1,0 +1,2 @@
+- [ ] GUI zoom with ctrl+shift+plus/minus
+- [ ] Set up better vim.ui stuff

@@ -16,4 +16,13 @@ M.xdg_config_path = function(app)
     end
 end
 
+--- Check if any active LSP client supports a given method
+---@param method string LSP method to check for support
+---@return boolean true if any client supports the method, false otherwise
+M.any_lsp_supports_method = function(method)
+    return vim.iter(vim.lsp.get_clients()):any(function(client)
+        return client.supports_method(method)
+    end)
+end
+
 return M

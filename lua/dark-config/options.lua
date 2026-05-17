@@ -16,3 +16,5 @@ vim.opt.undolevels = 2000
 -- window management
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.mousemodel = "extend"

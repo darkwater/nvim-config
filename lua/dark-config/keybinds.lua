@@ -51,6 +51,9 @@ if fn.unlimited_config() then
     local telescope = require("telescope.builtin")
 
     wk.add {
+        { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
+        { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
+
         { "<leader>w",  group = "window",      proxy = "<C-w>" },
         { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
 

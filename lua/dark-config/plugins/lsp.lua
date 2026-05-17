@@ -1,3 +1,5 @@
+vim.lsp.enable("copilot")
+
 require("tiny-inline-diagnostic").setup {
     preset = "powerline",
     options = {

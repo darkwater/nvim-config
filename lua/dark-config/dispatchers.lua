@@ -5,11 +5,7 @@ local M = {}
 local fn = require("dark-config.functions")
 
 M.goto_definition = function()
-    local lsp_support = vim.iter(vim.lsp.get_clients()):any(function (v)
-        return v:supports_method("textDocument/definition")
-    end)
-
-    if lsp_support then
+    if fn.any_lsp_supports_method("textDocument/definition") then
         if fn.unlimited_config() then
             require("telescope.builtin").lsp_definitions()
         else
