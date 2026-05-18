@@ -1,6 +1,19 @@
 local M = {}
 
-function M.setup()
+---@class opts
+---@field only_for_sudo_user string? when invoked with sudo, only set up for this user of sudo
+
+---@param opts opts
+---@return boolean applied whether the config was applied or not
+function M.setup(opts)
+    local fn = require("dark-config.functions")
+    if not fn.unlimited_config() and
+        opts.only_for_sudo_user ~= nil and
+        vim.env.SUDO_USER ~= nil and
+        vim.env.SUDO_USER ~= opts.only_for_sudo_user then
+        return false
+    end
+
     -- set this before plugins load
     vim.g.mapleader = " "
 
@@ -15,15 +28,18 @@ function M.setup()
         require("dark-config.neovide")
     end
 
-    if require("dark-config.functions").unlimited_config() then
+    if fn.unlimited_config() then
         require("dark-config.lsp.rust")
         require("dark-config.lsp.lua")
         require("dark-config.plugins.snacks")
-        require("dark-config.plugins.completion")
         require("dark-config.plugins.lsp")
         require("dark-config.plugins.neotree")
         require("dark-config.plugins.satellite")
+        require("dark-config.plugins.copilot")
+        require("dark-config.plugins.completion")
     end
+
+    return true
 end
 
 return M

@@ -18,3 +18,4 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.mousemodel = "extend"
+vim.opt.smartcase = true
