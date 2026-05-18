@@ -27,12 +27,15 @@ vim.pack.add {
     { src = github "shatur/neovim-ayu", version = "e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8" },
     -- shows available keybinds
     { src = github "folke/which-key.nvim", version = "fcbf4eea17cb299c02557d576f0d568878e354a4" },
+
+    -- ui library (dependency for custom stuff and neo-tree)
+    { src = github "muniftanjim/nui.nvim", version = "de740991c12411b663994b2860f1a4fd0937c130" },
 }
 
 if fn.unlimited_config() then
     vim.pack.add {
         --- dependencies
-        github "muniftanjim/nui.nvim",  -- neo-tree
+        -- nui is already specified above
         github "nvim-lua/plenary.nvim", -- neo-tree, telescope
         github "saghen/blink.lib",      -- blink
         --- end of dependencies
@@ -54,6 +57,7 @@ if fn.unlimited_config() then
         github "rachartier/tiny-inline-diagnostic.nvim",
     }
 end
+
 
 --------------------------------------------------------------------------------
 -- turn the github links above into hyperlinks :3

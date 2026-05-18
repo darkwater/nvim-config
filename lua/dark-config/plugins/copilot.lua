@@ -7,6 +7,7 @@
 ---@class Copilot.SignIn.Response
 ---@field userCode string code the user should copy
 ---@field command lsp.Command
+---@field status string? could be AlreadySignedIn
 
 local fn = require("dark-config.functions")
 
@@ -45,6 +46,18 @@ vim.api.nvim_create_user_command("CopilotSignIn", function ()
     ---@param result Copilot.SignIn.Response
     ---@diagnostic disable-next-line: param-type-mismatch (signIn is a custom request method)
     copilot:request("signIn", vim.empty_dict(), function(_, result, _)
+        if result.status == "AlreadySignedIn" then
+            vim.notify(
+                "Already signed in.",
+                vim.log.levels.INFO,
+                { title = "Github Copilot" }
+            )
+            return
+        end
+
+        vim.fn.setreg("+", result.userCode)
+        vim.fn.setreg("*", result.userCode)
+
         vim.notify(
             "Code: " .. result.userCode .. "\n"
             .. "Copied to clipboard.\n"
