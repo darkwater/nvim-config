@@ -48,6 +48,11 @@ if fn.unlimited_config() then
                 { "kitty", "--directory", vim.fn.getcwd() },
                 { detach = true }
             )
+        else
+            vim.notify(
+                "No display env set; won't spawn kitty",
+                vim.log.levels.ERROR
+            )
         end
     end
 
