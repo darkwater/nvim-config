@@ -21,7 +21,7 @@ end
 ---@return boolean supported true if any client supports the method, false otherwise
 function M.any_lsp_supports_method(method)
     return vim.iter(vim.lsp.get_clients()):any(function(client)
-        return client.supports_method(method)
+        return client:supports_method(method)
     end)
 end
 
