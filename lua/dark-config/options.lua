@@ -9,6 +9,10 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 
+-- search
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+
 -- undo
 vim.opt.undofile = true
 vim.opt.undolevels = 2000
@@ -18,4 +22,3 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.mousemodel = "extend"
-vim.opt.smartcase = true

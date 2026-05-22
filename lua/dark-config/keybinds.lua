@@ -45,6 +45,8 @@ wk.add {
     { "<leader>Pu", vim.pack.update,          desc = "Update plugins" },
     { "<leader>Pr", dsp.pack_update_lockfile, desc = "Revert plugins to lockfile" },
     { "<leader>Pc", dsp.pack_clean,           desc = "Remove unused plugins" },
+
+    { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
 
 if fn.unlimited_config() then
@@ -54,14 +56,15 @@ if fn.unlimited_config() then
         { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
         { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
 
-        { "<leader>w",  group = "window",      proxy = "<C-w>" },
         { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
 
         { "<leader>p",     group = "pickers" },
         -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },
         { "<leader>pf",    telescope.find_files,                            desc = "Open file..." },
+        { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
         { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config..." },
         { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config..." },
         { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open Neovim config..." },
+        { "<leader>p?",    telescope.help_tags,                             desc = "Open file..." },
     }
 end

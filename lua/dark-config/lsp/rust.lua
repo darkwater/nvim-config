@@ -74,3 +74,13 @@ vim.lsp.config("rust_analyzer", {
 })
 
 vim.lsp.enable("rust_analyzer")
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client_id = ev.data.client_id
+        local client = assert(vim.lsp.get_client_by_id(client_id))
+        if client.name == 'rust_analyzer' then
+            vim.lsp.on_type_formatting.enable(true, { client_id = client_id })
+        end
+    end,
+})

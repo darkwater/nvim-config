@@ -27,7 +27,7 @@ vim.lsp.handlers["didChangeStatus"] = function(_, status, ctx)
 
         if status.message:match("sign") then
             vim.notify(
-                "Use :CopilotSignIn to sign in",
+                "Use :LspCopilotSignIn to sign in",
                 vim.log.levels.INFO,
                 { title = "Github Copilot" }
             )
@@ -35,44 +35,44 @@ vim.lsp.handlers["didChangeStatus"] = function(_, status, ctx)
     end
 end
 
-vim.api.nvim_create_user_command("CopilotSignIn", function ()
-    local clients = vim.lsp.get_clients { name = "copilot" }
-    local copilot = clients[1]
-    if not copilot then
-        vim.notify("Copilot client not found", vim.log.levels.ERROR)
-        return
-    end
-
-    ---@param result Copilot.SignIn.Response
-    ---@diagnostic disable-next-line: param-type-mismatch (signIn is a custom request method)
-    copilot:request("signIn", vim.empty_dict(), function(_, result, _)
-        if result.status == "AlreadySignedIn" then
-            vim.notify(
-                "Already signed in.",
-                vim.log.levels.INFO,
-                { title = "Github Copilot" }
-            )
-            return
-        end
-
-        vim.fn.setreg("+", result.userCode)
-        vim.fn.setreg("*", result.userCode)
-
-        vim.notify(
-            "Code: " .. result.userCode .. "\n"
-            .. "Copied to clipboard.\n"
-            .. "Opening browser in 2 seconds...",
-            vim.log.levels.INFO,
-            { title = "Github Copilot" }
-        )
-
-        vim.defer_fn(function()
-            copilot:exec_cmd(result.command, {}, vim.print)
-        end, 2000)
-    end)
-end, {
-    desc = "Sign in to the Copilot LSP",
-})
+-- vim.api.nvim_create_user_command("CopilotSignIn", function ()
+--     local clients = vim.lsp.get_clients { name = "copilot" }
+--     local copilot = clients[1]
+--     if not copilot then
+--         vim.notify("Copilot client not found", vim.log.levels.ERROR)
+--         return
+--     end
+--
+--     ---@param result Copilot.SignIn.Response
+--     ---@diagnostic disable-next-line: param-type-mismatch (signIn is a custom request method)
+--     copilot:request("signIn", vim.empty_dict(), function(_, result, _)
+--         if result.status == "AlreadySignedIn" then
+--             vim.notify(
+--                 "Already signed in.",
+--                 vim.log.levels.INFO,
+--                 { title = "Github Copilot" }
+--             )
+--             return
+--         end
+--
+--         vim.fn.setreg("+", result.userCode)
+--         vim.fn.setreg("*", result.userCode)
+--
+--         vim.notify(
+--             "Code: " .. result.userCode .. "\n"
+--             .. "Copied to clipboard.\n"
+--             .. "Opening browser in 2 seconds...",
+--             vim.log.levels.INFO,
+--             { title = "Github Copilot" }
+--         )
+--
+--         vim.defer_fn(function()
+--             copilot:exec_cmd(result.command, {}, vim.print)
+--         end, 2000)
+--     end)
+-- end, {
+--     desc = "Sign in to the Copilot LSP",
+-- })
 
 vim.lsp.enable("copilot")
 
