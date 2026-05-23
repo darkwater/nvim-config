@@ -53,3 +53,23 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.cmd.abbreviate("let", "local")
     end,
 })
+
+-- show lsp activations
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = augroup,
+    callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+        vim.notify(
+            "LSP attached: `" .. client.name .. "`",
+            vim.log.levels.INFO,
+            {
+                title = "LSP attached",
+                timeout = 1500,
+            }
+        )
+    end,
+})
+
+return {
+    augroup = augroup,
+}
