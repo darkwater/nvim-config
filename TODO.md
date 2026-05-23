@@ -2,3 +2,4 @@
 - [ ] Set up better vim.ui stuff
 - [ ] Fix help autocmd only working once
 - [ ] System colors
+- [ ] Bash highlighting in Github Actions yaml

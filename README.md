@@ -7,6 +7,8 @@ In May 2026 I decided to completely redo my Neovim config from scratch, with 12
 years of experience using (Neo)vim, and using the latest cool things (eg.
 vim.pack, blink, built-in lsp support/bindings, tree-sitter)
 
+![Screenshot of the config](./assets/demo.png)
+
 Principles
 ----------
 

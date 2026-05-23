@@ -61,7 +61,7 @@ if fn.unlimited_config() then
     ---@return function
     M.file_picker_in = function(dir)
         return function ()
-            telescope.find_files { cwd = dir }
+            telescope.find_files { cwd = dir, hidden = true }
         end
     end
 

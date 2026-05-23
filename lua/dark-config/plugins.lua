@@ -4,9 +4,13 @@ local fn = require("dark-config.lib.functions")
 ---@return string
 local function github(repo) return "https://github.com/" .. repo end
 
+local opts = {
+    confirm = vim.env.DARK_CONFIG_NONINTERACTIVE_PLUGINS ~= "true",
+}
+
 -- basic plugins that are also installed for root
 -- pinned to commit for added security
-vim.pack.add {
+vim.pack.add({
     -- provides :%S (case-aware substitution)
     { src = github "tpope/vim-abolish", version = "dcbfe065297d31823561ba787f51056c147aa682" },
     -- ga with unicode and digraph info
@@ -30,10 +34,10 @@ vim.pack.add {
 
     -- ui library (dependency for custom stuff and neo-tree)
     { src = github "muniftanjim/nui.nvim", version = "de740991c12411b663994b2860f1a4fd0937c130" },
-}
+}, opts)
 
 if fn.unlimited_config() then
-    vim.pack.add {
+    vim.pack.add({
         --- dependencies
         -- nui is already specified above
         github "nvim-lua/plenary.nvim", -- neo-tree, telescope
@@ -55,7 +59,7 @@ if fn.unlimited_config() then
         -- lsp
         github "neovim/nvim-lspconfig",
         github "rachartier/tiny-inline-diagnostic.nvim",
-    }
+    }, opts)
 end
 
 
