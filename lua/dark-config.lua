@@ -1,13 +1,14 @@
 local M = {}
 
----@class opts
+---@class dark-config.opts
 ---@field only_for_sudo_user string? when invoked with sudo, only set up for this user of sudo
 
----@param opts opts
+---@param opts dark-config.opts?
 ---@return boolean applied whether the config was applied or not
 function M.setup(opts)
     local fn = require("dark-config.lib.functions")
     if not fn.unlimited_config() and
+        opts ~= nil and
         opts.only_for_sudo_user ~= nil and
         vim.env.SUDO_USER ~= nil and
         vim.env.SUDO_USER ~= opts.only_for_sudo_user then
