@@ -47,11 +47,11 @@ Principles
 - **A healthy dose of plugins**
 
   Not too many, not too few. I like using plugins, but I also like keeping my
-  setup relatively simple. My previous setup grew slowly over time to 82, and
-  well, stuff broke after a while. There were plugins I don't even remember
-  what they do. This time around, I'm gonna be a bit more thoughtful about
-  plugins I add. I'll also document what a plugin is for, including if it's
-  just a dependency for something.
+  setup relatively simple. My previous setup grew slowly over time to 82
+  plugins, and well, stuff broke after a while. There were plugins I don't even
+  remember what they do. This time around, I'm gonna be a bit more thoughtful
+  about plugins I add. I'll also document what a plugin is for, including if
+  it's just a dependency for something.
 
 - **A bunch of custom functionality**
 
