@@ -64,6 +64,15 @@ if fn.unlimited_config() then
             telescope.find_files { cwd = dir }
         end
     end
+
+    M.grep_picker = function()
+        vim.ui.input({
+            prompt = "Grep for",
+        }, function(input)
+            if not input or input == "" then return end
+            telescope.live_grep { default_text = input }
+        end)
+    end
 end
 
 return M

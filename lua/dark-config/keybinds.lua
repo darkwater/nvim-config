@@ -60,11 +60,13 @@ if fn.unlimited_config() then
 
         { "<leader>p",     group = "pickers" },
         -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },
-        { "<leader>pf",    telescope.find_files,                            desc = "Open file..." },
+        { "<leader>pf",    telescope.find_files,                            desc = "Open project file..." },
         { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
-        { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config..." },
-        { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config..." },
-        { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open Neovim config..." },
-        { "<leader>p?",    telescope.help_tags,                             desc = "Open file..." },
+        { "<leader>pg",    telescope.live_grep,                             desc = "Live search in project..." },
+        { "<leader>pG",    dsp.grep_picker,                                 desc = "Search in project..." },
+        { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config file..." },
+        { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config file..." },
+        { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open dotfile..." },
+        { "<leader>p?",    telescope.help_tags,                             desc = "Search for help tag..." },
     }
 end
