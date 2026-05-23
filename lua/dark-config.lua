@@ -29,8 +29,9 @@ function M.setup(opts)
     end
 
     if fn.unlimited_config() then
-        require("dark-config.lsp.rust")
+        require("dark-config.lsp.bash")
         require("dark-config.lsp.lua")
+        require("dark-config.lsp.rust")
         require("dark-config.plugins.snacks")
         require("dark-config.plugins.lsp")
         require("dark-config.plugins.neotree")

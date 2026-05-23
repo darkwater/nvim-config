@@ -1,8 +1,11 @@
+local fn = require("dark-config.functions")
+
 local function dir_specific_setup()
-    if vim.fn.executable("rustup") == 0 then
-        if vim.fn.filereadable("Cargo.toml") == 1 then
-            print("rustup not found, rust-analyzer will not be available")
-        end
+    if vim.fn.filereadable("Cargo.toml") == 0 then
+        return
+    end
+
+    if not fn.require_binary("rustup", "Rust Analyzer") then
         return
     end
 
@@ -17,9 +20,13 @@ local function dir_specific_setup()
                 end
             end
         },
-        function (result)
-            if result.code ~= 0 then
-                print("rustup which rust-analyzer failed with code " .. result.code)
+        vim.schedule_wrap(function (result)
+            if result.code == 0 then
+                vim.notify(
+                    "`rustup which rust-analyzer` failed\nrust-analyzer will not be available",
+                    vim.log.levels.WARN,
+                    { title = "Rust Analyzer" }
+                )
                 return
             end
 
@@ -30,9 +37,13 @@ local function dir_specific_setup()
                     cmd = { path },
                 })
             else
-                print("rust-analyzer not found, rust-analyzer will not be available")
+                vim.notify(
+                    "`rust-analyzer` not found\nrust-analyzer will not be available",
+                    vim.log.levels.WARN,
+                    { title = "Rust Analyzer" }
+                )
             end
-        end
+        end)
     )
 end
 
