@@ -2,8 +2,8 @@ local wk = require("which-key")
 local nv = { "n", "v" }
 local iv = { "i", "v" }
 
-local fn = require("dark-config.functions")
-local dsp = require("dark-config.dispatchers")
+local fn = require("dark-config.lib.functions")
+local dsp = require("dark-config.lib.dispatchers")
 
 wk.setup {
     preset = "helix",

@@ -2,7 +2,7 @@
 
 local M = {}
 
-local fn = require("dark-config.functions")
+local fn = require("dark-config.lib.functions")
 
 M.goto_definition = function()
     if fn.any_lsp_supports_method("textDocument/definition") then

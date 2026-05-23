@@ -1,6 +1,6 @@
 local augroup = vim.api.nvim_create_augroup("dark-config", { clear = true })
 
-local fn = require("dark-config.functions")
+local fn = require("dark-config.lib.functions")
 
 -- put :help windows on the right and make them 80 columns wide
 -- TODO: this only works on the first :help in a session

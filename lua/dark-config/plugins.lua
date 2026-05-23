@@ -1,4 +1,4 @@
-local fn = require("dark-config.functions")
+local fn = require("dark-config.lib.functions")
 
 ---@param repo string
 ---@return string

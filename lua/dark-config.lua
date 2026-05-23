@@ -6,7 +6,7 @@ local M = {}
 ---@param opts opts
 ---@return boolean applied whether the config was applied or not
 function M.setup(opts)
-    local fn = require("dark-config.functions")
+    local fn = require("dark-config.lib.functions")
     if not fn.unlimited_config() and
         opts.only_for_sudo_user ~= nil and
         vim.env.SUDO_USER ~= nil and

@@ -1,4 +1,4 @@
-local fn = require("dark-config.functions")
+local fn = require("dark-config.lib.functions")
 
 local function dir_specific_setup()
     if vim.fn.filereadable("Cargo.toml") == 0 then

@@ -9,7 +9,7 @@
 ---@field command lsp.Command
 ---@field status string? could be AlreadySignedIn
 
-local fn = require("dark-config.functions")
+local fn = require("dark-config.lib.functions")
 
 fn.require_binary("copilot-language-server", "Copilot")
 
