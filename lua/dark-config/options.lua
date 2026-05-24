@@ -1,7 +1,25 @@
+local fn = require("dark-config.lib.functions")
+
+if fn.unlimited_config() then
+    vim.opt.backup = true
+    vim.opt.backupdir = { vim.fn.stdpath("state") .. "/backup//" }
+end
+
 -- sign column
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
+
+-- hidden characters
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = "┝━",
+    trail = "░",
+    extends = ">",
+    precedes = "<",
+    multispace = "│   ",
+}
+vim.opt.showbreak = "󱞩 "
 
 -- indent
 vim.opt.tabstop = 4
@@ -22,3 +40,4 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.mousemodel = "extend"
+vim.opt.nrformats = { "hex", "bin", "blank", "alpha" }
