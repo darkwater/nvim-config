@@ -6,17 +6,10 @@ function M.demo(opts)
     local path = opts.path or ".tmp/demo-new.png"
     local delay_ms = opts.delay_ms or 1500
 
-    vim.opt.laststatus = 3
-    vim.opt.showmode = false
-    vim.opt.cmdheight = 1
-    vim.opt.termguicolors = true
-
-    vim.cmd("edit README.md")
-
-    pcall(vim.cmd.Neotree, "reveal", "left")
-
-    vim.cmd("wincmd p")
-    vim.cmd("normal! gg")
+    vim.cmd.edit "README.md"
+    vim.cmd.Neotree("reveal", "left")
+    vim.cmd.wincmd "p"
+    vim.cmd.normal "gg"
 
     vim.defer_fn(function()
         vim.notify("dark-config demo loaded", vim.log.levels.INFO, {
