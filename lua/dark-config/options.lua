@@ -17,7 +17,7 @@ vim.opt.listchars = {
     trail = "░",
     extends = ">",
     precedes = "<",
-    multispace = "│   ",
+    leadmultispace = "│   ",
 }
 vim.opt.showbreak = "󱞩 "
 

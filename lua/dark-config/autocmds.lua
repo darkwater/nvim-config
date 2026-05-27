@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
     group = augroup,
     pattern = "lua",
     callback = function()
-        vim.cmd.abbreviate("let", "local")
+        vim.cmd.abbreviate("<buffer>", "let", "local")
     end,
 })
 
