@@ -1,9 +1,12 @@
 local wk = require("which-key")
 local nv = { "n", "v" }
+local ni = { "n", "i" }
 local iv = { "i", "v" }
+local i  = { "i" }
 
 local fn = require("dark-config.lib.functions")
 local dsp = require("dark-config.lib.dispatchers")
+local copilot = require("dark-config.plugins.copilot")
 
 wk.setup {
     preset = "helix",
@@ -49,24 +52,27 @@ wk.add {
     { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
 
-if fn.unlimited_config() then
-    local telescope = require("telescope.builtin")
+if not fn.unlimited_config() then return end
 
-    wk.add {
-        { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
-        { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
+local telescope = require("telescope.builtin")
 
-        { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
+wk.add {
+    { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
+    { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
 
-        { "<leader>p",     group = "pickers" },
-        -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },
-        { "<leader>pf",    telescope.find_files,                            desc = "Open project file..." },
-        { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
-        { "<leader>pg",    telescope.live_grep,                             desc = "Live search in project..." },
-        { "<leader>pG",    dsp.grep_picker,                                 desc = "Search in project..." },
-        { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config file..." },
-        { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config file..." },
-        { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open dotfile..." },
-        { "<leader>p?",    telescope.help_tags,                             desc = "Search for help tag..." },
-    }
-end
+    { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
+
+    { "<C-f>",   copilot.accept_suggestion,           desc = "Accept suggestion",        mode = i },
+    { "<C-S-j>", copilot.request_or_accept_next_edit, desc = "Request/accept next edit", mode = ni },
+
+    { "<leader>p",     group = "pickers" },
+    -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },
+    { "<leader>pf",    telescope.find_files,                            desc = "Open project file..." },
+    { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
+    { "<leader>pg",    telescope.live_grep,                             desc = "Live search in project..." },
+    { "<leader>pG",    dsp.grep_picker,                                 desc = "Search in project..." },
+    { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config file..." },
+    { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config file..." },
+    { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open dotfile..." },
+    { "<leader>p?",    telescope.help_tags,                             desc = "Search for help tag..." },
+}
