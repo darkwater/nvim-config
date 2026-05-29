@@ -62,8 +62,9 @@ wk.add {
 
     { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
 
-    { "<C-f>",   copilot.accept_suggestion,           desc = "Accept suggestion",        mode = i },
-    { "<C-S-j>", copilot.request_or_accept_next_edit, desc = "Request/accept next edit", mode = ni },
+    { "<C-f>",   copilot.accept_suggestion,            desc = "Accept suggestion",                   mode = i },
+    { "<C-S-f>", copilot.accept_suggestion_first_line, desc = "Accept suggestion (first line only)", mode = i },
+    { "<C-S-j>", copilot.request_or_accept_next_edit,  desc = "Request/accept next edit",            mode = ni },
 
     { "<leader>p",     group = "pickers" },
     -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },

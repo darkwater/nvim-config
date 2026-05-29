@@ -122,14 +122,41 @@ end
 
 ---@param bufnr integer?
 function M.accept_suggestion(bufnr)
-    vim.lsp.inline_completion.get()
+    vim.lsp.inline_completion.get { bufnr = bufnr }
 
-    local copilot = get_copilot(bufnr)
-    if not copilot then return end
-
+    -- local copilot = get_copilot(bufnr)
+    -- if not copilot then return end
+    --
     -- if vim.lsp.inline_completion.get() then
     --     M.request_next_edit(bufnr)
     -- end
+end
+
+---@param bufnr integer?
+function M.accept_suggestion_first_line(bufnr)
+    vim.lsp.inline_completion.get {
+        bufnr = bufnr,
+        on_accept = function(item)
+            local insert_text
+            if type(item.insert_text) == "string" then
+                insert_text = item.insert_text --[[@as string]]
+            else
+                insert_text = (item.insert_text --[[@as lsp.StringValue]]).value
+            end
+
+            if insert_text:match("^\n*$") then
+                -- either empty or all blank lines, just accept the whole thing
+                return item
+            end
+
+            -- find the end of the first non-empty line
+            local _, end_pos = insert_text:find("^\n*[^\n]+\n?")
+
+            item.insert_text = insert_text:sub(1, end_pos)
+
+            return item
+        end,
+    }
 end
 
 ---@param bufnr integer?
