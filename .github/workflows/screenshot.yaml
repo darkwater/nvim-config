@@ -122,7 +122,7 @@ jobs:
               -metric AE \
               assets/demo.png \
               .tmp/demo-new.png \
-              null: 2>&1 || true
+              .tmp/demo-diff.png 2>&1 || true
           )"
 
           echo "Image diff: $diff"
@@ -150,3 +150,15 @@ jobs:
         with:
           commit_message: "docs: update demo screenshot"
           file_pattern: assets/demo.png
+
+      - name: Notify about commit
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          HERMES_TOKEN: ${{ secrets.HERMES_TOKEN }}
+          HERMES_CHAT_ID: ${{ secrets.HERMES_CHAT_ID }}
+        run: |
+          wget https://github.com/darkwater/hermes/releases/download/v0.0.0-12/hermes-x86_64-linux -O hermes
+          chmod +x hermes
+          export HERMES_TOKEN="$HERMES_TOKEN"
+          export HERMES_CHAT_ID="$HERMES_CHAT_ID"
+          ./hermes send --image .tmp/demo-diff.png "nvim-config: updated demo screenshot"
