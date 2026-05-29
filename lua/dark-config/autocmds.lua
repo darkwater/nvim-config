@@ -70,6 +70,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- update leadmultispace according to shiftwidth
+vim.api.nvim_create_autocmd("OptionSet", {
+    group = augroup,
+    pattern = "shiftwidth",
+    callback = function(_)
+        local sw = vim.bo.shiftwidth
+        vim.opt_local.listchars:append { leadmultispace = "│" .. string.rep(" ", sw - 1) }
+    end,
+})
+
 return {
     augroup = augroup,
 }
