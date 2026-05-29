@@ -67,10 +67,11 @@ wk.add {
     { "<C-S-j>", copilot.request_or_accept_next_edit,  desc = "Request/accept next edit",            mode = ni },
 
     { "<leader>p",     group = "pickers" },
-    -- { "<leader>pp", telescope.find_files,                            desc = "Open project..." },
+    { "<leader>pp",    dsp.project_picker,                              desc = "Open project..." },
     { "<leader>pf",    telescope.find_files,                            desc = "Open project file..." },
     { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
     { "<leader>pg",    telescope.live_grep,                             desc = "Live search in project..." },
+    { "<leader>pd",    telescope.diagnostics,                           desc = "Project diagnostics..." },
     { "<leader>pG",    dsp.grep_picker,                                 desc = "Search in project..." },
     { "<leader>ph",    dsp.file_picker_in(fn.xdg_config_path("hypr")),  desc = "Open Hyprland config file..." },
     { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config file..." },
