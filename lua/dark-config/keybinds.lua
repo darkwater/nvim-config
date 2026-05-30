@@ -8,11 +8,13 @@ local fn = require("dark-config.lib.functions")
 local dsp = require("dark-config.lib.dispatchers")
 local copilot = require("dark-config.plugins.copilot")
 
-wk.setup {
-    preset = "helix",
-    icons = { mappings = false },
-    expand = 0,
-}
+if not wk.did_setup then
+    wk.setup {
+        preset = "helix",
+        icons = { mappings = false },
+        expand = 0,
+    }
+end
 
 -- NOTE: commas are replaced with \x2c to avoid Tabularize aligning on them
 
@@ -55,8 +57,9 @@ wk.add {
 require("mini.pairs").setup {
     modes = { insert = true, command = false, terminal = false },
     mappings = {
-        -- i double-quote my strings and rust has syntax like 'a
+        ['"'] = false,
         ["'"] = false,
+        ["`"] = false,
     },
 }
 
@@ -78,6 +81,7 @@ wk.add {
     { "<leader>pp",    dsp.project_picker,                              desc = "Open project..." },
     { "<leader>pf",    telescope.find_files,                            desc = "Open project file..." },
     { "<leader>pr",    telescope.oldfiles,                              desc = "Open recent file..." },
+    { "<leader>pR",    telescope.reloader,                              desc = "Reload a Lua module..." },
     { "<leader>pg",    telescope.live_grep,                             desc = "Live search in project..." },
     { "<leader>pd",    telescope.diagnostics,                           desc = "Project diagnostics..." },
     { "<leader>pG",    dsp.grep_picker,                                 desc = "Search in project..." },
@@ -85,4 +89,6 @@ wk.add {
     { "<leader>p\x2c", dsp.file_picker_in(fn.xdg_config_path("nvim")),  desc = "Open Neovim config file..." },
     { "<leader>p.",    dsp.file_picker_in(vim.env.HOME .. "/dotfiles"), desc = "Open dotfile..." },
     { "<leader>p?",    telescope.help_tags,                             desc = "Search for help tag..." },
+
+    { "<leader>,,", dsp.reload_config, desc = "Reload config" },
 }

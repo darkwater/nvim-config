@@ -47,13 +47,28 @@ local function dir_specific_setup()
     )
 end
 
+local augroup = vim.api.nvim_create_augroup("dark-config.lsp.rust", { clear = true })
+
 vim.api.nvim_create_autocmd("DirChanged", {
+    group = augroup,
     pattern = "global",
     callback = dir_specific_setup,
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
+    group = augroup,
     callback = dir_specific_setup,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = augroup,
+    callback = function(ev)
+        local client_id = ev.data.client_id
+        local client = assert(vim.lsp.get_client_by_id(client_id))
+        if client.name == 'rust_analyzer' then
+            vim.lsp.on_type_formatting.enable(true, { client_id = client_id })
+        end
+    end,
 })
 
 vim.lsp.config("rust_analyzer", {
@@ -85,13 +100,3 @@ vim.lsp.config("rust_analyzer", {
 })
 
 vim.lsp.enable("rust_analyzer")
-
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        local client_id = ev.data.client_id
-        local client = assert(vim.lsp.get_client_by_id(client_id))
-        if client.name == 'rust_analyzer' then
-            vim.lsp.on_type_formatting.enable(true, { client_id = client_id })
-        end
-    end,
-})

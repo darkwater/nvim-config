@@ -1,6 +1,6 @@
-local augroup = vim.api.nvim_create_augroup("dark-config", { clear = true })
-
 local fn = require("dark-config.lib.functions")
+
+local augroup = vim.api.nvim_create_augroup("dark-config.autocmds", { clear = true })
 
 -- put :help windows on the right and make them 80 columns wide
 -- TODO: this only works on the first :help in a session
@@ -80,6 +80,26 @@ vim.api.nvim_create_autocmd("OptionSet", {
     end,
 })
 
-return {
-    augroup = augroup,
-}
+-- -- autoreload config files
+-- -- TODO: maybe dont keep forever idk
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     group = augroup,
+--     pattern = "*.config/nvim/lua/dark-config/*",
+--     callback = function(ev)
+--         local pos = ev.file:find("/lua/dark%-config")
+--         local relative_path = ev.file:sub(pos + #"/lua/")
+--         -- dark-config/statusline/init.lua
+--
+--         local without_ext = relative_path:sub(1, -5)
+--         -- dark-config/statusline/init
+--
+--         local with_dots = without_ext:gsub("/", ".")
+--         -- dark-config.statusline.init
+--
+--         local module_name = with_dots:gsub("%.init$", "")
+--         -- dark-config.statusline
+--
+--         package.loaded[module_name] = nil
+--         require(module_name)
+--     end,
+-- })

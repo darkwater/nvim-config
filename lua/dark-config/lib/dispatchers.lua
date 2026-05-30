@@ -39,6 +39,32 @@ function M.pack_clean()
     vim.pack.del(inactive)
 end
 
+--- Reload config
+function M.reload_config()
+    fn.unload_packages("dark%-config")
+    local success, err = pcall(require, "dark-config")
+    if success then
+        ---@diagnostic disable-next-line: cast-local-type
+        success, err = pcall(require("dark-config").setup)
+    end
+    if not success then
+        vim.notify(
+            "Error reloading config: " .. err,
+            vim.log.levels.ERROR,
+            { title = "Config reload failed" }
+        )
+    else
+        vim.notify(
+            "Config reloaded successfully",
+            vim.log.levels.INFO,
+            {
+                title = "Config reload",
+                timeout = 500,
+            }
+        )
+    end
+end
+
 if fn.unlimited_config() then
     local telescope = require("telescope.builtin")
     local ts_pickers = require("telescope.pickers")

@@ -23,7 +23,9 @@ function M.setup(opts)
     require("dark-config.options")
     require("dark-config.keybinds")
     require("dark-config.colors")
+    require("dark-config.system-colors")
     require("dark-config.autocmds")
+    require("dark-config.bars")
 
     if vim.g.neovide then
         require("dark-config.neovide")

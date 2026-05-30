@@ -43,4 +43,14 @@ function M.require_binary(binary, feature)
     return exists
 end
 
+--- Unloads all packages starting with a given prefix
+---@param prefix string prefix to match for unloading packages
+function M.unload_packages(prefix)
+    for name, _ in pairs(package.loaded) do
+        if name:match("^" .. prefix) then
+            package.loaded[name] = nil
+        end
+    end
+end
+
 return M

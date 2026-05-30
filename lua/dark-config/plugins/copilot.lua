@@ -228,7 +228,10 @@ function M.clear_next_edit(bufnr)
     current_next_edit[bufnr] = nil
 end
 
+local augroup = vim.api.nvim_create_augroup("dark-config.plugins.copilot", { clear = true })
+
 vim.api.nvim_create_autocmd({"CursorMoved", "CursorMovedI", "InsertLeave"}, {
+    group = augroup,
     callback = function(args)
         local bufnr = args.buf
         if not vim.api.nvim_buf_is_valid(bufnr) then return end
@@ -238,6 +241,7 @@ vim.api.nvim_create_autocmd({"CursorMoved", "CursorMovedI", "InsertLeave"}, {
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
+    group = augroup,
     callback = function(args)
         local bufnr = args.buf
         local copilot = assert(vim.lsp.get_client_by_id(args.data.client_id))
