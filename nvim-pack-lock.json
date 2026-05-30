@@ -16,6 +16,11 @@
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "mini.pairs": {
+      "rev": "30cf2f01c4aaa2033db67376b9924fa2442c05d6",
+      "src": "https://github.com/nvim-mini/mini.pairs",
+      "version": "'30cf2f01c4aaa2033db67376b9924fa2442c05d6'"
+    },
     "neo-tree.nvim": {
       "rev": "7abc884a07696a909cff57de7a0b7054ce151f98",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"

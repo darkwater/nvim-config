@@ -52,6 +52,14 @@ wk.add {
     { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
 
+require("mini.pairs").setup {
+    modes = { insert = true, command = false, terminal = false },
+    mappings = {
+        -- i double-quote my strings and rust has syntax like 'a
+        ["'"] = false,
+    },
+}
+
 if not fn.unlimited_config() then return end
 
 local telescope = require("telescope.builtin")
