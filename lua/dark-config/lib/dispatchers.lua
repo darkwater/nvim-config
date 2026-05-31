@@ -39,6 +39,24 @@ function M.pack_clean()
     vim.pack.del(inactive)
 end
 
+--- Zoom in or out in Neovide by a factor.
+--- Pass 0 to reset zoom.
+---@param factor number
+function M.neovide_zoom(factor)
+    return function()
+        if factor == 0 then
+            vim.g.neovide_scale_factor = 1.0
+            return
+        end
+
+        if vim.g.neovide_scale_factor == nil then
+            vim.g.neovide_scale_factor = 1.0
+        end
+
+        vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * factor
+    end
+end
+
 --- Reload config
 function M.reload_config()
     fn.unload_packages("dark%-config")

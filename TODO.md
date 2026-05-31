@@ -1,4 +1,4 @@
-- [ ] GUI zoom with ctrl+shift+plus/minus
+- [x] GUI zoom with ctrl+shift+plus/minus
 - [ ] Set up better vim.ui stuff
 - [x] Fix help autocmd only working once
 - [x] System colors

@@ -54,6 +54,14 @@ wk.add {
     { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
 
+if vim.g.neovide then
+    wk.add {
+        { "<C-0>", dsp.neovide_zoom(0), desc = "Reset zoom" },
+        { "<C-=>", dsp.neovide_zoom(1.1), desc = "Zoom in" },
+        { "<C-->", dsp.neovide_zoom(1 / 1.1), desc = "Zoom out" },
+    }
+end
+
 require("mini.pairs").setup {
     modes = { insert = true, command = false, terminal = false },
     mappings = {
