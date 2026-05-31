@@ -71,7 +71,7 @@ require("mini.pairs").setup {
     },
 }
 
-if not fn.unlimited_config() then return end
+if fn.limited_config() then return end
 
 local telescope = require("telescope.builtin")
 local gitsigns = require("gitsigns")

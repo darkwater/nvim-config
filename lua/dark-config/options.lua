@@ -1,6 +1,6 @@
 local fn = require("dark-config.lib.functions")
 
-if fn.unlimited_config() then
+if not fn.limited_config() then
     vim.opt.backup = true
     vim.opt.backupdir = { vim.fn.stdpath("state") .. "/backup//" }
 end
@@ -32,7 +32,7 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 -- undo
-vim.opt.undofile = fn.unlimited_config()
+vim.opt.undofile = not fn.limited_config()
 vim.opt.undolevels = 2000
 
 -- window management

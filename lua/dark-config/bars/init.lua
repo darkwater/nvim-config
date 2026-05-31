@@ -17,7 +17,7 @@ function M.statusline()
     out:module(colors.accent, vim.fn.hostname())
     out:module(colors.blue, vim.fn.fnamemodify(vim.fn.getcwd(), ":~"))
 
-    if fn.unlimited_config() then
+    if not fn.limited_config() then
         if git.cwd_is_git() then
             out:module(colors.cyan, git.current_branch())
         end

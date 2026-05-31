@@ -7,7 +7,7 @@ local M = {}
 ---@return boolean applied whether the config was applied or not
 function M.setup(opts)
     local fn = require("dark-config.lib.functions")
-    if not fn.unlimited_config() and
+    if fn.limited_config() and
         opts ~= nil and
         opts.only_for_sudo_user ~= nil and
         vim.env.SUDO_USER ~= nil and
@@ -31,7 +31,7 @@ function M.setup(opts)
     require("dark-config.autocmds")
     require("dark-config.bars")
 
-    if fn.unlimited_config() then
+    if not fn.limited_config() then
         require("dark-config.lsp.bash")
         require("dark-config.lsp.lua")
         require("dark-config.lsp.rust")

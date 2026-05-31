@@ -37,7 +37,7 @@ vim.pack.add({
     { src = github "muniftanjim/nui.nvim", version = "de740991c12411b663994b2860f1a4fd0937c130" },
 }, opts)
 
-if fn.unlimited_config() then
+if not fn.limited_config() then
     vim.pack.add({
         --- dependencies
         -- nui is already specified above

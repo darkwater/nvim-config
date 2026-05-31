@@ -1,7 +1,7 @@
 local M = {}
 
-function M.unlimited_config()
-    return vim.uv.getuid() ~= 0
+function M.limited_config()
+    return vim.uv.getuid() == 0
 end
 
 --- Return ~/.config/{app} or ~/.config when app is empty
