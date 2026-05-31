@@ -69,6 +69,20 @@ jobs:
 
           fc-cache -fv
 
+      - name: Install system colors config
+        run: |
+          set -eux
+
+          sudo tee /etc/system-colors.conf <<EOF
+          ACCENT_HOSTNAME="nagumo"
+          ACCENT_FG_HEX="#ce1015"
+          ACCENT_BG_HEX="#241c16"
+          ACCENT_FG_RGB="206;16;21"
+          ACCENT_BG_RGB="36;28;22"
+          EOF
+
+          sudo hostnamectl set-hostname nagumo
+
       - name: Prepare Neovim config
         run: |
           set -eux
