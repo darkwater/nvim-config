@@ -1,8 +1,9 @@
 local colors = require("dark-config.bars.colors")
 
----@class Bar
+---@class dark-config.bars.Bar
 local Bar = {}
 
+---@return dark-config.bars.Bar
 function Bar:new()
     local o = { out = "" }
     setmetatable(o, self)

@@ -21,7 +21,7 @@ local function dir_specific_setup()
             end
         },
         vim.schedule_wrap(function (result)
-            if result.code == 0 then
+            if result.code ~= 0 then
                 vim.notify(
                     "`rustup which rust-analyzer` failed\nrust-analyzer will not be available",
                     vim.log.levels.WARN,

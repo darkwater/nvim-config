@@ -45,21 +45,21 @@ if fn.unlimited_config() then
         github "saghen/blink.lib",      -- blink
         --- end of dependencies
 
-        -- github "github/copilot.vim",                -- ai autocomplete
-        github "nvim-neo-tree/neo-tree.nvim",       -- file sidebar
-        github "saghen/blink.cmp",                  -- completion framework
-        github "lewis6991/gitsigns.nvim",           -- git indicators in the gutter
-        github "lewis6991/satellite.nvim",          -- decorated scrollbars
-        github "folke/snacks.nvim",                 -- whole bunch of ui stuff
+        github "nvim-neo-tree/neo-tree.nvim", -- file sidebar
+        github "saghen/blink.cmp",            -- completion framework
+        github "lewis6991/gitsigns.nvim",     -- git indicators in the gutter
+        github "lewis6991/satellite.nvim",    -- decorated scrollbars
+        github "folke/snacks.nvim",           -- whole bunch of ui stuff
 
         -- telescope
-        github "nvim-telescope/telescope.nvim",           -- pickers
+        github "nvim-telescope/telescope.nvim",
         github "nvim-telescope/telescope-ui-select.nvim", -- ui for vim.ui.select
         github "jmacadie/telescope-hierarchy.nvim",       -- call hierarchy
 
         -- lsp
         github "neovim/nvim-lspconfig",
-        github "rachartier/tiny-inline-diagnostic.nvim",
+        github "rachartier/tiny-inline-diagnostic.nvim", -- eol diagnostic display
+        github "j-hui/fidget.nvim",                      -- progress display
     }, opts)
 end
 

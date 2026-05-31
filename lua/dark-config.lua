@@ -18,6 +18,10 @@ function M.setup(opts)
     -- set this before plugins load
     vim.g.mapleader = " "
 
+    if vim.g.neovide then
+        require("dark-config.neovide")
+    end
+
     -- note the order; eg. some stuff depends on plugins being loaded
     require("dark-config.plugins")
     require("dark-config.options")
@@ -26,10 +30,6 @@ function M.setup(opts)
     require("dark-config.system-colors")
     require("dark-config.autocmds")
     require("dark-config.bars")
-
-    if vim.g.neovide then
-        require("dark-config.neovide")
-    end
 
     if fn.unlimited_config() then
         require("dark-config.lsp.bash")

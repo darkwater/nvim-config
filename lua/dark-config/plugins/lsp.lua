@@ -15,3 +15,22 @@ require("tiny-inline-diagnostic").setup {
         },
     },
 }
+
+require("fidget").setup {}
+
+local augroup = vim.api.nvim_create_augroup("dark-config.plugins.lsp", { clear = true })
+
+-- prevent fidget window from being animated
+vim.api.nvim_create_autocmd("WinResized", {
+    group = augroup,
+    callback = function(ev)
+        local winid = tonumber(ev.file)
+        local bufnr = vim.api.nvim_win_get_buf(winid)
+        if vim.bo[bufnr].filetype ~= "fidget" then return end
+
+        vim.g.neovide_position_animation_length = 0
+        vim.defer_fn(function()
+            vim.g.neovide_position_animation_length = 0.2
+        end, 20)
+    end,
+})

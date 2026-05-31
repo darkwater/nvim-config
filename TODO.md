@@ -3,4 +3,5 @@
 - [x] Fix help autocmd only working once
 - [x] System colors
 - [ ] Bash highlighting in Github Actions yaml
-- [ ] Prevent Neovide scrolling animation when opening Telescope
+- [x] Prevent Neovide scrolling animation when opening Telescope
+- [ ] Prevent Neovide scrolling animation when opening Telescope in a less hacky way
