@@ -32,7 +32,7 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 -- undo
-vim.opt.undofile = true
+vim.opt.undofile = fn.unlimited_config()
 vim.opt.undolevels = 2000
 
 -- window management
