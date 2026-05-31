@@ -4,6 +4,20 @@ local M = {}
 
 local fn = require("dark-config.lib.functions")
 
+--- Wrap a function with arguments
+---
+--- M.fn(foo, "bar") will return function() foo("bar") end
+---
+---@param func fun(...) function to wrap
+---@param ... any arguments to pass to function
+---@return fun() wrapped function
+function M.with(func, ...)
+    local args = { ... }
+    return function()
+        func(unpack(args))
+    end
+end
+
 function M.goto_definition()
     if fn.any_lsp_supports_method("textDocument/definition") then
         if fn.unlimited_config() then
