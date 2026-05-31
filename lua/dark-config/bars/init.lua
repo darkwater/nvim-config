@@ -21,6 +21,12 @@ function M.statusline()
         if git.cwd_is_git() then
             out:module(colors.cyan, git.current_branch())
         end
+    else
+        if vim.uv.getuid() == 0 then
+            out:module(colors.red, "root")
+        else
+            out:module(colors.red, "limited")
+        end
     end
 
     out:spacer()
