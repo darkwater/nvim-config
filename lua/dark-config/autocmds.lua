@@ -3,15 +3,16 @@ local fn = require("dark-config.lib.functions")
 local augroup = vim.api.nvim_create_augroup("dark-config.autocmds", { clear = true })
 
 -- put :help windows on the right and make them 80 columns wide
--- TODO: this only works on the first :help in a session
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd('BufWinEnter', {
     group = augroup,
-    pattern = "help",
+    pattern = "*",
     callback = function()
-        if vim.o.columns > 140 or vim.o.columns > vim.o.lines then
-            vim.cmd.wincmd "L"
-            vim.cmd.wincmd "80|"
-            vim.wo.winfixwidth = true
+        if vim.bo.filetype == "help" then
+            if vim.o.columns > 140 or vim.o.columns > vim.o.lines then
+                vim.cmd.wincmd "L"
+                vim.cmd.wincmd "80|"
+                vim.wo.winfixwidth = true
+            end
         end
     end,
 })

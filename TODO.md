@@ -1,5 +1,6 @@
 - [ ] GUI zoom with ctrl+shift+plus/minus
 - [ ] Set up better vim.ui stuff
-- [ ] Fix help autocmd only working once
+- [x] Fix help autocmd only working once
 - [x] System colors
 - [ ] Bash highlighting in Github Actions yaml
+- [ ] Prevent Neovide scrolling animation when opening Telescope
