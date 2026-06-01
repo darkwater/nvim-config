@@ -65,6 +65,17 @@ vim.api.nvim_create_autocmd("OptionSet", {
     end,
 })
 
+-- kill vim.pack lsp after closing tab
+vim.api.nvim_create_autocmd("TabClosed", {
+    group = augroup,
+    callback = function()
+        local clients = vim.lsp.get_clients { name = "vim.pack" }
+        for _, client in ipairs(clients) do
+            client:stop()
+        end
+    end,
+})
+
 -- -- autoreload config files
 -- -- TODO: maybe dont keep forever idk
 -- vim.api.nvim_create_autocmd("BufWritePost", {

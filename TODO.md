@@ -5,3 +5,6 @@
 - [ ] Bash highlighting in Github Actions yaml
 - [x] Prevent Neovide scrolling animation when opening Telescope
 - [ ] Prevent Neovide scrolling animation when opening Telescope in a less hacky way
+- [ ] Deduplicate some things
+    - [ ] Neovide animation settings that are temporarily overridden by autocmds
+    - [ ] leadmultispace updated by autocmd on OptionSet
