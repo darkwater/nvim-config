@@ -45,6 +45,7 @@ function M.winbar()
     local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
     local modified = vim.bo[bufnr].modified
     local filetype = vim.bo[bufnr].filetype
+    local fileformat = vim.bo[bufnr].fileformat
     -- local lsp_clients = vim.lsp.get_clients { bufnr = bufnr }
 
     if vim.b[bufnr].neo_tree_source then
@@ -67,6 +68,10 @@ function M.winbar()
     -- for _, client in ipairs(lsp_clients) do
     --     lsp.module(out, client)
     -- end
+
+    if fileformat ~= "unix" then
+        out:module(colors.red, fileformat)
+    end
 
     out:module(colors.blue, filetype)
     out:module(colors.constant, "%L\\%l:%c%V")

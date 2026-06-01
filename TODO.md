@@ -8,3 +8,9 @@
 - [ ] Deduplicate some things
     - [ ] Neovide animation settings that are temporarily overridden by autocmds
     - [ ] leadmultispace updated by autocmd on OptionSet
+- [ ] <space>wQ that shows something like
+    ```
+    foo.lua
+    bar.lua*
+    are you sure you want to quit? y/n
+    ```
