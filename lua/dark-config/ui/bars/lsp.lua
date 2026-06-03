@@ -35,7 +35,14 @@ function M.module(out, client, bufnr)
     out:module(color, M.get_label(client))
 end
 
--- local augroup = vim.api.nvim_create_augroup("dark-config.bars.lsp", { clear = true })
+local augroup = vim.api.nvim_create_augroup("dark-config.bars.lsp", { clear = true })
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = augroup,
+    callback = function(_)
+        vim.cmd.redrawstatus()
+    end,
+})
+
 -- vim.api.nvim_create_autocmd("LspProgress", {
 --     group = augroup,
 --     ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
