@@ -27,22 +27,15 @@ function M.setup(opts)
     require("dark-config.options")
     require("dark-config.keybinds")
     require("dark-config.colors")
-    require("dark-config.system-colors")
     require("dark-config.autocmds")
-    require("dark-config.bars")
+    require("dark-config.ui.bars")
 
     if not fn.limited_config() then
-        require("dark-config.lsp.bash")
-        require("dark-config.lsp.lua")
-        require("dark-config.lsp.rust")
-        require("dark-config.lsp.typescript")
-        require("dark-config.lsp.yaml")
-        require("dark-config.plugins.snacks")
-        require("dark-config.plugins.lsp")
-        require("dark-config.plugins.neotree")
-        require("dark-config.plugins.satellite")
-        require("dark-config.plugins.copilot")
-        require("dark-config.plugins.completion")
+        require("dark-config.lsp")
+        require("dark-config.ui.snacks")
+        require("dark-config.ui.neotree")
+        require("dark-config.ui.satellite")
+        require("dark-config.ai.copilot")
     end
 
     return true

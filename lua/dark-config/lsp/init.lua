@@ -1,3 +1,10 @@
+require("dark-config.lsp.lang.bash")
+require("dark-config.lsp.lang.lua")
+require("dark-config.lsp.lang.rust")
+require("dark-config.lsp.lang.typescript")
+require("dark-config.lsp.lang.yaml")
+require("dark-config.lsp.completion")
+
 require("tiny-inline-diagnostic").setup {
     preset = "powerline",
     options = {
@@ -24,7 +31,7 @@ local augroup = vim.api.nvim_create_augroup("dark-config.plugins.lsp", { clear =
 vim.api.nvim_create_autocmd("WinResized", {
     group = augroup,
     callback = function(ev)
-        local winid = tonumber(ev.file)
+        local winid = assert(tonumber(ev.file))
         local bufnr = vim.api.nvim_win_get_buf(winid)
         if vim.bo[bufnr].filetype ~= "fidget" then return end
 

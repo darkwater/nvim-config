@@ -206,7 +206,7 @@ function M.lsp_clients_picker(opts)
             end,
         },
         previewer = ts_previewers.new_buffer_previewer {
-            define_preview = function(self, entry, status)
+            define_preview = function(self, entry, _)
                 local client = entry.value
                 local bufnr = self.state.bufnr
                 local winid = self.state.winid

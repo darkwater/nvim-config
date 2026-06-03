@@ -1,4 +1,4 @@
-local colors = require("dark-config.bars.colors")
+local colors = require("dark-config.ui.bars.colors")
 
 ---@class dark-config.bars.Bar
 local Bar = {}

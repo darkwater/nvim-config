@@ -1,6 +1,6 @@
 local M = {}
 
-local colors = require("dark-config.bars.colors")
+local colors = require("dark-config.ui.bars.colors")
 
 M.icons = {
     copilot = "",

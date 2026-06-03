@@ -6,7 +6,7 @@ local i  = { "i" }
 
 local fn = require("dark-config.lib.functions")
 local dsp = require("dark-config.lib.dispatchers")
-local copilot = require("dark-config.plugins.copilot")
+local copilot = require("dark-config.ai.copilot")
 
 if not wk.did_setup then
     wk.setup {

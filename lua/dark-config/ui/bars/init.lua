@@ -1,14 +1,14 @@
 local M = {}
 
 local fn     = require("dark-config.lib.functions")
-local Bar    = require("dark-config.bars.helper")
-local colors = require("dark-config.bars.colors")
-local git    = require("dark-config.bars.git")
-local lsp    = require("dark-config.bars.lsp")
+local Bar    = require("dark-config.ui.bars.helper")
+local colors = require("dark-config.ui.bars.colors")
+local git    = require("dark-config.ui.bars.git")
+local lsp    = require("dark-config.ui.bars.lsp")
 
 vim.opt.laststatus = 3
-vim.opt.statusline = "%!v:lua.require'dark-config.bars'.statusline()"
-vim.opt.winbar = "%!v:lua.require'dark-config.bars'.winbar()"
+vim.opt.statusline = "%!v:lua.require'dark-config.ui.bars'.statusline()"
+vim.opt.winbar = "%!v:lua.require'dark-config.ui.bars'.winbar()"
 
 function M.statusline()
     local out = Bar:new()
