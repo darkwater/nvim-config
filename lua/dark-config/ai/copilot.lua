@@ -79,6 +79,7 @@ local function handle_inline_edit(err, result, ctx)
 
     current_next_edit[bufnr] = result
 
+    -- TODO: manually sync with keybinds
     local ctrl = require("which-key.config").icons.keys.C
     local shift = require("which-key.config").icons.keys.S
     local letter = "J"

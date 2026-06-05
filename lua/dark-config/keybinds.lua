@@ -1,8 +1,9 @@
-local wk = require("which-key")
-local nv = { "n", "v" }
-local ni = { "n", "i" }
-local iv = { "i", "v" }
-local i  = { "i" }
+local wk  = require("which-key")
+local all = { "n", "i", "c", "v", "o", "t" }
+local nv  = { "n", "v" }
+local ni  = { "n", "i" }
+local vi  = { "i", "v" }
+local i   = { "i" }
 
 local fn = require("dark-config.lib.functions")
 local dsp = require("dark-config.lib.dispatchers")
@@ -21,7 +22,7 @@ end
 wk.add {
     -- some basic keybinds
     { "<C-s>", "<Cmd>write<CR>",      desc = "Save file",           mode = nv },
-    { "<C-s>", "<Esc><Cmd>write<CR>", desc = "Save file",           mode = iv },
+    { "<C-s>", "<Esc><Cmd>write<CR>", desc = "Save file",           mode = vi },
     { "gg",    "gg0",                 desc = "Go to start of file", mode = nv },
     { "G",     "G0",                  desc = "Go to end of file",   mode = nv },
     { "<CR>",  "<Cmd>e #<CR>",        desc = "Switch to alternate file" },
@@ -56,9 +57,9 @@ wk.add {
 
 if vim.g.neovide then
     wk.add {
-        { "<C-0>", dsp.neovide_zoom(0), desc = "Reset zoom" },
-        { "<C-=>", dsp.neovide_zoom(1.1), desc = "Zoom in" },
-        { "<C-->", dsp.neovide_zoom(1 / 1.1), desc = "Zoom out" },
+        { "<C-0>", dsp.neovide_zoom(0),       desc = "Reset zoom", mode = all },
+        { "<C-=>", dsp.neovide_zoom(1.1),     desc = "Zoom in",    mode = all },
+        { "<C-->", dsp.neovide_zoom(1 / 1.1), desc = "Zoom out",   mode = all },
     }
 end
 
@@ -74,7 +75,8 @@ require("mini.pairs").setup {
 if fn.limited_config() then return end
 
 local telescope = require("telescope.builtin")
-local gitsigns = require("gitsigns")
+local gitsigns  = require("gitsigns")
+local git       = require("dark-config.git")
 
 wk.add {
     { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
@@ -87,9 +89,10 @@ wk.add {
     { "<C-S-j>", copilot.request_or_accept_next_edit,  desc = "Request/accept next edit",            mode = ni },
 
     { "<leader>g",  group = "git" },
-    { "<leader>gu", gitsigns.reset_hunk,                 desc = "Reset git hunk" },
-    { "[h",         dsp.with(gitsigns.nav_hunk, "prev"), desc = "Previous git hunk", mode = nv },
-    { "]h",         dsp.with(gitsigns.nav_hunk, "next"), desc = "Next git hunk",     mode = nv },
+    { "<leader>gu", gitsigns.reset_hunk,        desc = "Reset git hunk" },
+    { "<leader>gd", git.inline_diff.toggle,     desc = "Reset git hunk" },
+    { "[h",         dsp.with(gitsigns.nav_hunk, "prev"),                   desc = "Previous git hunk", mode = nv },
+    { "]h",         dsp.with(gitsigns.nav_hunk, "next"),                   desc = "Next git hunk",     mode = nv },
 
     { "<leader>p",     group = "pickers" },
     { "<leader>pp",    dsp.pickers.projects,                              desc = "Open project..." },
