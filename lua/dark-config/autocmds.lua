@@ -76,6 +76,22 @@ vim.api.nvim_create_autocmd("TabClosed", {
     end,
 })
 
+-- only show cursorline in active window
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+    group = augroup,
+    pattern = "*",
+    callback = function()
+        vim.wo.cursorline = true
+    end,
+})
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+    group = augroup,
+    pattern = "*",
+    callback = function()
+        vim.wo.cursorline = false
+    end,
+})
+
 -- -- autoreload config files
 -- -- TODO: maybe dont keep forever idk
 -- vim.api.nvim_create_autocmd("BufWritePost", {
