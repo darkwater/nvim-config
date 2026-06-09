@@ -17,7 +17,7 @@ local gitsigns = require("gitsigns")
 ---@type Map<number, boolean>
 local enabled_for_bufnr = {}
 
-local extmark_ns = vim.api.nvim_create_namespace("dark_config_git_inline_diff")
+local extmark_ns = vim.api.nvim_create_namespace("dark-config.git.inline-diff")
 
 function M.enable(bufnr)
     bufnr = bufnr or vim.api.nvim_get_current_buf()

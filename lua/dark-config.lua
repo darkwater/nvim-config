@@ -35,6 +35,7 @@ function M.setup(opts)
         require("dark-config.ui.snacks")
         require("dark-config.ui.neotree")
         require("dark-config.ui.satellite")
+        require("dark-config.ui.zsh-history")
         require("dark-config.ai.copilot")
     end
 
