@@ -52,6 +52,10 @@ wk.add {
     { "<leader>Pr", dsp.pack_update_lockfile, desc = "Revert plugins to lockfile" },
     { "<leader>Pc", dsp.pack_clean,           desc = "Remove unused plugins" },
 
+    { "<leader>r",  group = "rust" },
+    { "<leader>rr", ":Cargo run<CR>",  desc = "Cargo run" },
+    { "<leader>rt", ":Cargo test<CR>", desc = "Cargo test" },
+
     { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
 
