@@ -31,8 +31,6 @@ vim.pack.add({
     { src = github "shatur/neovim-ayu", version = "e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8" },
     -- shows available keybinds
     { src = github "folke/which-key.nvim", version = "fcbf4eea17cb299c02557d576f0d568878e354a4" },
-    -- auto-close pairs
-    { src = github "nvim-mini/mini.pairs", version = "30cf2f01c4aaa2033db67376b9924fa2442c05d6" },
     -- ui library (dependency for custom stuff and neo-tree)
     { src = github "muniftanjim/nui.nvim", version = "de740991c12411b663994b2860f1a4fd0937c130" },
 }, opts)

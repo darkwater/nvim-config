@@ -67,15 +67,6 @@ if vim.g.neovide then
     }
 end
 
-require("mini.pairs").setup {
-    modes = { insert = true, command = false, terminal = false },
-    mappings = {
-        ['"'] = false,
-        ["'"] = false,
-        ["`"] = false,
-    },
-}
-
 if fn.limited_config() then return end
 
 local telescope = require("telescope.builtin")
