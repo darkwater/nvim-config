@@ -11,7 +11,7 @@ M.icons = {
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 function M.is_attached_to(client, bufnr)
-    return client.attached_buffers[bufnr] == true
+    return not not client.attached_buffers[bufnr]
 end
 
 ---@param client vim.lsp.Client
