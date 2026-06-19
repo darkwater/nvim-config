@@ -6,6 +6,8 @@ M.icons = {
     copilot = "",
     lua_ls = "",
     rust_analyzer = "",
+    yamlls = "",
+    clangd = "",
 }
 
 ---@param client vim.lsp.Client
