@@ -1,0 +1,18 @@
+{
+  "services": {
+    "prefix": "services",
+    "description": "services",
+    "body": [
+      "services:",
+      "\t${1:app}:",
+      "\t\timage: ${2:foo/bar}",
+      "\t\trestart: unless-stopped",
+      "\t\tenvironment:",
+      "\t\t\t${3:ENV_VAR: VALUE}",
+      "\t\tports:",
+      "\t\t\t- \"${4:8000:80}\"",
+      "\t\tvolumes:",
+      "\t\t\t- \"./data:/data\""
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "build": {
+    "prefix": "build",
+    "description": "build: Changes to the build system (eg. cargo, pub)",
+    "body": ["build($1): $2"]
+  },
+  "chore": {
+    "prefix": "chore",
+    "description": "chore: Other changes that don't modify src or test files",
+    "body": ["chore($1): $2"]
+  },
+  "chore-deps-update": {
+    "prefix": "chore-deps-update",
+    "body": ["chore(deps): update dependencies"]
+  },
+  "ci": {
+    "prefix": "ci",
+    "description": "ci: Changes related to CI",
+    "body": ["ci($1): $2"]
+  },
+  "docs": {
+    "prefix": "docs",
+    "description": "docs: Documentation-only changes",
+    "body": ["docs($1): $2"]
+  },
+  "feat": {
+    "prefix": "feat",
+    "description": "feat: A new feature or improvement",
+    "body": ["feat($1): $2"]
+  },
+  "fix": {
+    "prefix": "fix",
+    "description": "fix: A bug fix or tweak",
+    "body": ["fix($1): $2"]
+  },
+  "perf": {
+    "prefix": "perf",
+    "description": "perf: A code change that improves performance",
+    "body": ["perf($1): $2"]
+  },
+  "refactor": {
+    "prefix": "refactor",
+    "description": "refactor: A code change that neither fixes a bug nor adds a feature",
+    "body": ["refactor($1): $2"]
+  },
+  "revert": {
+    "prefix": "revert",
+    "description": "revert: Reverts a previous commit",
+    "body": ["revert($1): $2"]
+  },
+  "style": {
+    "prefix": "style",
+    "description": "style: Changes that do not affect the meaning of the code (eg. formatting)",
+    "body": ["style($1): $2"]
+  },
+  "test": {
+    "prefix": "test",
+    "description": "test: Adding missing tests or correcting existing tests",
+    "body": ["test($1): $2"]
+  }
+}

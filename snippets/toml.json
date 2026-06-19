@@ -1,0 +1,30 @@
+{
+  "rust-toolchain": {
+    "prefix": "rust-toolchain",
+    "body": [
+      "[toolchain]",
+      "channel = \"nightly-${1:YEAR-MONTH}-01\"",
+      "components = [\"rust-src\", \"rustfmt\", \"clippy\", \"llvm-tools\", \"rust-analyzer\"]"
+    ]
+  },
+  "profile": {
+    "prefix": "profile",
+    "body": [
+      "[profile.dev]",
+      "opt-level = 0",
+      "debug = true",
+      "debug-assertions = true",
+      "overflow-checks = true",
+      "lto = false",
+      "codegen-units = 256",
+      "",
+      "[profile.release]",
+      "opt-level = 3",
+      "debug = false",
+      "debug-assertions = false",
+      "overflow-checks = false",
+      "lto = false",
+      "codegen-units = 16"
+    ]
+  }
+}
