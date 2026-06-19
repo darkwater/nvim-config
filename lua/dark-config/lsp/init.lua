@@ -1,4 +1,5 @@
 require("dark-config.lsp.lang.bash")
+require("dark-config.lsp.lang.c")
 require("dark-config.lsp.lang.lua")
 require("dark-config.lsp.lang.rust")
 require("dark-config.lsp.lang.typescript")
