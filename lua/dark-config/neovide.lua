@@ -11,7 +11,7 @@ vim.g.neovide_position_animation_length  = 0.2
 vim.g.neovide_floating_shadow            = false
 
 vim.keymap.set("n", "<C-S-v>", '"+p')
-vim.keymap.set("i", "<C-S-v>", "<C-r>+")
+vim.keymap.set({"i", "c"}, "<C-S-v>", "<C-r>+")
 
 -- TODO: freezes neovide?
 

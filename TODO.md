@@ -15,3 +15,4 @@
     are you sure you want to quit? y/n
     ```
 - [ ] Toggle menu system
+- [ ] Keep `<space>pp` sorted by recently used after entering a filter
