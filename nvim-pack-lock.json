@@ -91,6 +91,14 @@
       "src": "https://github.com/tpope/vim-endwise",
       "version": "'4994afb0cdf956d9a665a14b9c834869e602c396'"
     },
+    "vim-magnum": {
+      "rev": "7a30761b935d72bada5bbe90162a6afdb77c858d",
+      "src": "https://github.com/glts/vim-magnum"
+    },
+    "vim-radical": {
+      "rev": "aca8992a25d317a4c6fa42e263e8506ea3e355d8",
+      "src": "https://github.com/glts/vim-radical"
+    },
     "vim-repeat": {
       "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
       "src": "https://github.com/tpope/vim-repeat",

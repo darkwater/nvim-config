@@ -41,6 +41,7 @@ if not fn.limited_config() then
         -- nui is already specified above
         github "nvim-lua/plenary.nvim", -- neo-tree, telescope
         github "saghen/blink.lib",      -- blink
+        github "glts/vim-magnum",       -- vim-radical
         --- end of dependencies
 
         github "nvim-neo-tree/neo-tree.nvim", -- file sidebar
@@ -48,6 +49,7 @@ if not fn.limited_config() then
         github "lewis6991/gitsigns.nvim",     -- git indicators in the gutter
         github "lewis6991/satellite.nvim",    -- decorated scrollbars
         github "folke/snacks.nvim",           -- whole bunch of ui stuff
+        github "glts/vim-radical",            -- convert between number representations
 
         -- telescope
         github "nvim-telescope/telescope.nvim",
