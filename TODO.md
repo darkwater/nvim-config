@@ -16,3 +16,6 @@
     ```
 - [ ] Toggle menu system
 - [ ] Keep `<space>pp` sorted by recently used after entering a filter
+- [ ] Automatically resize man pages on window resize
+- [ ] Rust stuff like `<space>rr`
+- [ ] Warnings for missing tree-sitter grammars

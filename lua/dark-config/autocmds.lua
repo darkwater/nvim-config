@@ -56,13 +56,19 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- update leadmultispace according to shiftwidth
+local function update_leadmultispace()
+    local sw = vim.bo.shiftwidth
+    vim.opt_local.listchars:append { leadmultispace = "│" .. string.rep(" ", sw - 1) }
+end
 vim.api.nvim_create_autocmd("OptionSet", {
     group = augroup,
     pattern = "shiftwidth",
-    callback = function(_)
-        local sw = vim.bo.shiftwidth
-        vim.opt_local.listchars:append { leadmultispace = "│" .. string.rep(" ", sw - 1) }
-    end,
+    callback = update_leadmultispace,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = augroup,
+    pattern = "*",
+    callback = update_leadmultispace,
 })
 
 -- kill vim.pack lsp after closing tab
