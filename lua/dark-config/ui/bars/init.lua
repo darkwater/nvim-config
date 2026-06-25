@@ -74,8 +74,9 @@ function M.winbar()
     end
 
     out:module(colors.blue, filetype)
-    out:module(colors.constant, "%c%V")
-    out:module(colors.constant, "%l/%L")
+    out:module(colors.constant, "%c%Vc")
+    out:module(colors.constant, "%l/%Ll")
+    out:module(colors.constant, "%p%%")
 
     return out:get()
 end
