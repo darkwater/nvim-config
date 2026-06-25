@@ -43,6 +43,7 @@ wk.add {
     { "<leader><Tab>(",    ":Tabularize /(<CR>",                  desc = "foo ( bar",          mode = nv },
     { "<leader><Tab>{",    ":Tabularize /{<CR>",                  desc = "foo { bar",          mode = nv },
     { "<leader><Tab>[",    ":Tabularize /[<CR>",                  desc = "foo [ bar",          mode = nv },
+    { "<leader><Tab>|",    ":Tabularize /|<CR>",                  desc = "foo | bar",          mode = nv },
     { "<leader><Tab>-",    ":Tabularize /[^-]\\zs--\\ze[^-]<CR>", desc = "foo -- bar",         mode = nv },
     { "<leader><Tab>:",    ":Tabularize /:\\zs/l0r1<CR>",         desc = "foo: bar",           mode = nv },
     { "<leader><Tab>\x2c", ":Tabularize/\x2c\\zs\\ze/l0r1<CR>",   desc = "foo\x2c bar",        mode = nv },
