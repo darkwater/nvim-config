@@ -8,6 +8,24 @@ require("neo-tree").setup {
                 ["<space>"] = "none",
             },
         },
+        filtered_items = {
+            visible = false,
+            hide_dotfiles = false,
+            always_show = {
+                ".cargo",
+                ".github",
+                ".gitea",
+            },
+            hide_by_name = {
+                "__generated__",
+                ".git",
+                ".gitmodules",
+            },
+            hide_by_pattern = {
+                "*.g.dart",
+                "*.freezed.dart",
+            },
+        },
     },
     default_component_configs = {
         icon = {
