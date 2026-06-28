@@ -56,10 +56,11 @@ if not fn.limited_config() then
         github "nvim-telescope/telescope-ui-select.nvim", -- ui for vim.ui.select
         github "jmacadie/telescope-hierarchy.nvim",       -- call hierarchy
 
-        -- lsp
+        -- language support
         github "neovim/nvim-lspconfig",
         github "rachartier/tiny-inline-diagnostic.nvim", -- eol diagnostic display
         github "j-hui/fidget.nvim",                      -- progress display
+        github "nvim-treesitter/nvim-treesitter",        -- manage treesitter parsers
     }, opts)
 end
 

@@ -5,6 +5,7 @@ require("dark-config.lsp.lang.rust")
 require("dark-config.lsp.lang.typescript")
 require("dark-config.lsp.lang.yaml")
 require("dark-config.lsp.completion")
+require("dark-config.lsp.treesitter") -- yeah yeah not lsp but whatever
 
 require("tiny-inline-diagnostic").setup {
     preset = "powerline",
