@@ -1,3 +1,9 @@
+local installed = require("nvim-treesitter").get_installed()
+
+if #installed == 0 then
+    return
+end
+
 vim.api.nvim_create_autocmd('FileType', {
     pattern = require("nvim-treesitter").get_installed(),
     callback = function()
