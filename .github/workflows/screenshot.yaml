@@ -27,6 +27,8 @@ jobs:
             xvfb \
             scrot \
             imagemagick
+          wget https://github.com/darkwater/hermes/releases/download/v0.0.0-12/hermes-x86_64-linux -O /tmp/hermes
+          chmod +x /tmp/hermes
 
       - name: Install latest Neovim
         run: |
@@ -91,6 +93,7 @@ jobs:
           ln -s "$GITHUB_WORKSPACE" ~/.config/nvim
 
       - name: Generate screenshot
+        timeout-minutes: 1
         run: |
           set -eux
 
@@ -104,8 +107,19 @@ jobs:
 
           export DARK_CONFIG_NONINTERACTIVE_PLUGINS=true
 
-          timeout 30s \
-            kitty \
+          (
+            sleep 30s
+            if pidof kitty; then
+              echo "we got stuck!"
+              mkdir -p .tmp
+              scrot .tmp/demo-stuck.png
+              pkill -9 nvim
+              pkill -9 kitty
+              exit 1
+            fi
+          ) &
+
+          kitty \
             --class nvim-demo \
             --override font_family="Hack Nerd Font Mono" \
             --override font_size=12 \
@@ -166,13 +180,17 @@ jobs:
           file_pattern: assets/demo.png
 
       - name: Notify about commit
+        if: failure()
+        env:
+          HERMES_TOKEN: ${{ secrets.HERMES_TOKEN }}
+          HERMES_CHAT_ID: ${{ secrets.HERMES_CHAT_ID }}
+        run: |
+          /tmp/hermes send --image .tmp/demo-stuck.png "nvim-config: ci got stuck"
+
+      - name: Notify about commit
         if: steps.diff.outputs.changed == 'true'
         env:
           HERMES_TOKEN: ${{ secrets.HERMES_TOKEN }}
           HERMES_CHAT_ID: ${{ secrets.HERMES_CHAT_ID }}
         run: |
-          wget https://github.com/darkwater/hermes/releases/download/v0.0.0-12/hermes-x86_64-linux -O hermes
-          chmod +x hermes
-          export HERMES_TOKEN="$HERMES_TOKEN"
-          export HERMES_CHAT_ID="$HERMES_CHAT_ID"
-          ./hermes send --image .tmp/demo-diff.png "nvim-config: updated demo screenshot"
+          /tmp/hermes send --image .tmp/demo-diff.png "nvim-config: updated demo screenshot"
