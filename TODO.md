@@ -2,7 +2,7 @@
 - [ ] Set up better vim.ui stuff
 - [x] Fix help autocmd only working once
 - [x] System colors
-- [ ] Bash highlighting in Github Actions yaml
+- [x] Bash highlighting in Github Actions yaml
 - [x] Prevent Neovide scrolling animation when opening Telescope
 - [ ] Prevent Neovide scrolling animation when opening Telescope in a less hacky way
 - [ ] Deduplicate some things
@@ -19,3 +19,5 @@
 - [ ] Automatically resize man pages on window resize
 - [ ] Rust stuff like `<space>rr`
 - [ ] Warnings for missing tree-sitter grammars
+- [ ] Syntax highlighting within Markdown code blocks
+- [ ] Markdown edit autocmd that keeps -/= length in sync with line above
