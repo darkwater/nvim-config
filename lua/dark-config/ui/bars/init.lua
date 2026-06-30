@@ -19,7 +19,8 @@ function M.statusline()
 
     if not fn.limited_config() then
         if git.cwd_is_git() then
-            out:module(colors.cyan, git.current_branch())
+            out:module(colors.cyan, git.current_branch(), "󰘬")
+            out:module(colors.cyan, git.sync_status())
         end
     else
         if vim.uv.getuid() == 0 then

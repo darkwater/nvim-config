@@ -19,9 +19,15 @@ function Bar:pad(amount)
     self:add(string.rep(" ", amount))
 end
 
-function Bar:module(color, text)
+function Bar:module(color, text, icon)
+    if not text then return end
+
     self:add(color)
     self:pad(1)
+    if icon then
+        self:add(icon)
+        self:pad(1)
+    end
     self:add(text)
     self:pad(1)
     self:add(colors.reset)
