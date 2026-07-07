@@ -21,3 +21,5 @@
 - [ ] Warnings for missing tree-sitter grammars
 - [ ] Syntax highlighting within Markdown code blocks
 - [ ] Markdown edit autocmd that keeps -/= length in sync with line above
+- [ ] Fix <CR> not working in location list, our map overrides it
+- [ ] Fix git diff preview deletions after the last line
