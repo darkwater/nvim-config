@@ -43,3 +43,20 @@ vim.api.nvim_create_autocmd("WinResized", {
         end, 20)
     end,
 })
+
+-- enable color marks supplied by lsp
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = augroup,
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if not client then return end
+
+        if client.server_capabilities.colorProvider then
+            vim.lsp.document_color.enable(
+                true,
+                { bufnr = ev.buf },
+                { style = "virtual" }
+            )
+        end
+    end,
+})
