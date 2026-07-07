@@ -113,6 +113,27 @@ function M.open_terminal()
     end
 end
 
+function M.open_neotree()
+    require("neo-tree.command").execute {
+        action = "focus",
+        source = "filesystem",
+        reveal = true,
+        position = "left",
+    }
+end
+
+function M.open_neotree_symbols()
+    require("neo-tree.command").execute({
+        action = "focus",
+        source = "document_symbols",
+        position = "right",
+    }, {
+        window = {
+            width = 40,
+        },
+    })
+end
+
 M.pickers = require("dark-config.ui.telescope").pickers
 
 return M

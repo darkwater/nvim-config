@@ -1,6 +1,13 @@
 require("neo-tree").setup {
+    sources = {
+        "filesystem",
+        "buffers",
+        "git_status",
+        "document_symbols",
+    },
     window = {
         width = 30,
+        position = "left",
     },
     filesystem = {
         window = {
@@ -41,6 +48,14 @@ require("neo-tree").setup {
                 -- TODO: figure out how to detect symlinks and other special files
                 -- config.text = " "
             end,
+        },
+    },
+    document_symbols = {
+        follow_cursor = true,
+        follow_tree_cursor = true,
+        window = {
+            position = "right",
+            width = 40,
         },
     },
 }

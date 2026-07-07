@@ -78,7 +78,8 @@ wk.add {
     { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
     { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
 
-    { "<leader>wt", ":Neotree reveal<CR>", desc = "Open Neotree" },
+    { "<leader>wt", dsp.open_neotree,         desc = "Open Neotree" },
+    { "<leader>wS", dsp.open_neotree_symbols, desc = "Open Neotree (document symbols)" },
 
     { "<C-f>",   copilot.accept_suggestion,            desc = "Accept suggestion",                   mode = i },
     { "<C-S-f>", copilot.accept_suggestion_first_line, desc = "Accept suggestion (first line only)", mode = i },
