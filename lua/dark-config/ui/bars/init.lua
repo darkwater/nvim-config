@@ -60,6 +60,8 @@ function M.winbar()
         out:module(colors.blue, "%f")
     end
 
+    out:module(colors.purple, vim.fn.expand("#:t"))
+
     out:module_opt(colors.red, "%r")
 
     out:colored_opt(colors.purple, "%a")
