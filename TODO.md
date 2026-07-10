@@ -24,3 +24,5 @@
 - [ ] Fix <CR> not working in location list, our map overrides it
 - [ ] Fix git diff preview deletions after the last line
 - [ ] Figure out why we keep getting duplicate copilot instances
+- [ ] Offer to install missing packages through pacman on Arch
+    - Use fresh distrobox instance on SteamOS to figure out which
