@@ -25,7 +25,7 @@ wk.add {
     { "<C-s>", "<Esc><Cmd>write<CR>", desc = "Save file",           mode = vi },
     { "gg",    "gg0",                 desc = "Go to start of file", mode = nv },
     { "G",     "G0",                  desc = "Go to end of file",   mode = nv },
-    { "<CR>",  "<Cmd>e #<CR>",        desc = "Switch to alternate file" },
+    { "<CR>",  "<C-^>",               desc = "Switch to alternate file" },
 
     { "'",  dsp.open_terminal,   desc = "Open external terminal" },
     { "gd", dsp.goto_definition, desc = "Go to definition", mode = nv },
