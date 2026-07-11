@@ -2,12 +2,17 @@ local M = {}
 
 local colors = require("dark-config.ui.bars.colors")
 
+---@class dark-config.ui.bars.lsp.icon
+---@field icon string
+---@field color string
+
+---@type table<string, dark-config.ui.bars.lsp.icon>
 M.icons = {
-    copilot = "",
-    lua_ls = "",
-    rust_analyzer = "",
-    yamlls = "",
-    clangd = "",
+    copilot       = { icon = "", color = colors.cyan },
+    lua_ls        = { icon = "", color = colors.blue },
+    rust_analyzer = { icon = "", color = colors.orange },
+    yamlls        = { icon = "", color = colors.purple },
+    clangd        = { icon = "", color = colors.blue },
 }
 
 ---@param client vim.lsp.Client
@@ -17,8 +22,9 @@ function M.is_attached_to(client, bufnr)
 end
 
 ---@param client vim.lsp.Client
-function M.get_label(client)
-    return M.icons[client.name] or client.name
+---@return dark-config.ui.bars.lsp.icon
+function M.get_icon(client)
+    return M.icons[client.name] or { icon = client.name, color = colors.green }
 end
 
 ---@param out dark-config.bars.Bar
@@ -27,14 +33,16 @@ end
 function M.module(out, client, bufnr)
     bufnr = bufnr or vim.api.nvim_get_current_buf()
 
+    local icon = M.get_icon(client)
+
     local color
     if M.is_attached_to(client, bufnr) then
-        color = colors.green
+        color = icon.color
     else
         color = colors.grey
     end
 
-    out:module(color, M.get_label(client))
+    out:module(color, icon.icon)
 end
 
 local augroup = vim.api.nvim_create_augroup("dark-config.bars.lsp", { clear = true })
