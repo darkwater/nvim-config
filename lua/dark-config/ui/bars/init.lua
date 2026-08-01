@@ -60,7 +60,9 @@ function M.winbar()
         out:module(colors.blue, "%f")
     end
 
-    out:module(colors.purple, vim.fn.expand("#:t"))
+    if vim.fn.expand("#") ~= vim.fn.expand("%") then
+        out:module(colors.purple, vim.fn.expand("#:t"))
+    end
 
     out:module_opt(colors.red, "%r")
 
