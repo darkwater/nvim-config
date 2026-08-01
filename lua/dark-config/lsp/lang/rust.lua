@@ -77,7 +77,7 @@ vim.lsp.config("rust_analyzer", {
             assist = { preferSelf = true },
             check = { command = "clippy" },
             completion = { postfix = { enable = false } },
-            diagnostics = { enable = true }, -- often has false positives
+            diagnostics = { enable = false }, -- often has false positives
             imports = { preferNoStd = true },
             inlayHints = {
                 bindingModeHints = { enable = true },
