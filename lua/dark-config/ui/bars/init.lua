@@ -11,79 +11,86 @@ vim.opt.statusline = "%!v:lua.require'dark-config.ui.bars'.statusline()"
 vim.opt.winbar = "%!v:lua.require'dark-config.ui.bars'.winbar()"
 
 function M.statusline()
-    local out = Bar:new()
-    local lsp_clients = vim.lsp.get_clients()
+    return vim.api.nvim_win_call(vim.g.statusline_winid, function()
+        local out = Bar:new()
+        local lsp_clients = vim.lsp.get_clients()
 
-    out:module(colors.accent, vim.fn.hostname())
-    out:module(colors.blue, vim.fn.fnamemodify(vim.fn.getcwd(), ":~"))
+        out:module(colors.accent, vim.fn.hostname())
+        out:module(colors.blue, vim.fn.fnamemodify(vim.fn.getcwd(), ":~"))
 
-    if not fn.limited_config() then
-        if git.cwd_is_git() then
-            out:module(colors.cyan, git.current_branch(), "󰘬")
-            out:module(colors.cyan, git.sync_status())
-        end
-    else
-        if vim.uv.getuid() == 0 then
-            out:module(colors.red, "root")
+        if not fn.limited_config() then
+            if git.cwd_is_git() then
+                out:module(colors.cyan, git.current_branch(), "󰘬")
+                out:module(colors.cyan, git.sync_status())
+            end
         else
-            out:module(colors.red, "limited")
+            if vim.uv.getuid() == 0 then
+                out:module(colors.red, "root")
+            else
+                out:module(colors.red, "limited")
+            end
         end
-    end
 
-    out:spacer()
+        out:spacer()
 
-    for client in vim.iter(lsp_clients):rev() do
-        lsp.module(out, client)
-    end
+        for client in vim.iter(lsp_clients):rev() do
+            lsp.module(out, client)
+        end
 
-    out:pad(2)
+        out:pad(2)
 
-    return out:get()
+        return out:get()
+    end)
 end
 
 function M.winbar()
-    local out = Bar:new()
-    local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
-    local modified = vim.bo[bufnr].modified
-    local filetype = vim.bo[bufnr].filetype
-    local fileformat = vim.bo[bufnr].fileformat
-    -- local lsp_clients = vim.lsp.get_clients { bufnr = bufnr }
+    return vim.api.nvim_win_call(vim.g.statusline_winid, function()
+        local out = Bar:new()
+        local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
+        local modified = vim.bo[bufnr].modified
+        local filetype = vim.bo[bufnr].filetype
+        local fileformat = vim.bo[bufnr].fileformat
+        -- local lsp_clients = vim.lsp.get_clients { bufnr = bufnr }
 
-    if vim.b[bufnr].neo_tree_source then
-        out:module(colors.blue, vim.b[bufnr].neo_tree_source)
-        return out:get()
-    end
+        if vim.b[bufnr].neo_tree_source then
+            out:module(colors.blue, vim.b[bufnr].neo_tree_source)
+            return out:get()
+        end
 
-    if modified then
-        out:module(colors.orange, "%f •")
-    else
-        out:module(colors.blue, "%f")
-    end
+        -- current file, relative to home, then relative to cwd
+        local filename = vim.fn.expand("%:~:."):gsub("%%", "%%")
+        if filename == "" then
+            filename = "%f"
+        end
+        if modified then
+            out:module(colors.orange, filename .. " •")
+        else
+            out:module(colors.blue, filename)
+        end
 
-    if vim.fn.expand("#") ~= vim.fn.expand("%") then
         out:module(colors.purple, vim.fn.expand("#:t"))
-    end
 
-    out:module_opt(colors.red, "%r")
+        out:module_opt(colors.red, "%r")
 
-    out:colored_opt(colors.purple, "%a")
+        out:colored_opt(colors.purple, "%a")
 
-    out:spacer()
+        out:spacer()
 
-    -- for _, client in ipairs(lsp_clients) do
-    --     lsp.module(out, client)
-    -- end
+        -- for _, client in ipairs(lsp_clients) do
+        --     lsp.module(out, client)
+        -- end
 
-    if fileformat ~= "unix" then
-        out:module(colors.red, fileformat)
-    end
+        if fileformat ~= "unix" then
+            out:module(colors.red, fileformat)
+        end
 
-    out:module(colors.blue, filetype)
-    out:module(colors.constant, "%c%Vc")
-    out:module(colors.constant, "%l/%Ll")
-    out:module(colors.constant, "%p%%")
+        out:module(colors.blue, filetype)
+        out:module(colors.constant, "%c%Vc")
+        out:module(colors.constant, "%l/%Ll")
+        out:module(colors.constant, "%p%%")
 
-    return out:get()
+        return out:get()
+    end)
 end
 
 return M
