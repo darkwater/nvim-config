@@ -13,6 +13,7 @@ M.icons = {
     rust_analyzer = { icon = "", color = colors.orange },
     yamlls        = { icon = "", color = colors.purple },
     clangd        = { icon = "", color = colors.blue },
+    tombi         = { icon = "", color = colors.orange },
 }
 
 ---@param client vim.lsp.Client
