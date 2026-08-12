@@ -54,8 +54,8 @@ wk.add {
     { "<leader>Pc", dsp.pack_clean,           desc = "Remove unused plugins" },
 
     { "<leader>r",  group = "rust" },
-    { "<leader>rr", ":vsp term://cargo run<CR>",  desc = "Cargo run" },
-    { "<leader>rt", ":vsp term://cargo test<CR>", desc = "Cargo test" },
+    { "<leader>rr", ":vsp term://cargo run<CR>i",  desc = "Cargo run" },
+    { "<leader>rt", ":vsp term://cargo test<CR>i", desc = "Cargo test" },
 
     { "<leader>w",  group = "window",      proxy = "<C-w>" },
 }
