@@ -25,6 +25,12 @@ local current_next_edit = {}
 
 fn.require_binary("copilot-language-server", "Copilot")
 
+vim.lsp.config("copilot", {
+    cmd_env = {
+        -- don't attempt to use keyring
+        GITHUB_COPILOT_AUTH_TOKEN_ENCRYPTION = false,
+    },
+})
 vim.lsp.enable("copilot")
 
 ---@param status Copilot.Status
