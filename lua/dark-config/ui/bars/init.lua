@@ -68,9 +68,13 @@ function M.winbar()
             out:module(colors.blue, filename)
         end
 
-        out:module(colors.purple, vim.fn.expand("#:t"))
+        if vim.fn.expand("#:t") ~= "" then
+            out:module(colors.purple, vim.fn.expand("#:t"))
+        end
 
-        out:module_opt(colors.red, "%r")
+        if vim.bo[bufnr].readonly then
+            out:module(colors.red, " RO")
+        end
 
         out:colored_opt(colors.purple, "%a")
 
@@ -85,8 +89,8 @@ function M.winbar()
         end
 
         out:module(colors.blue, filetype)
-        out:module(colors.constant, "%c%Vc")
-        out:module(colors.constant, "%l/%Ll")
+        out:module(colors.constant, " %c%V")
+        out:module(colors.constant, " %l/%L")
         out:module(colors.constant, "%p%%")
 
         return out:get()
