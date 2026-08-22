@@ -77,6 +77,7 @@ local git       = require("dark-config.git")
 wk.add {
     { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
     { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
+    { "gri", telescope.lsp_implementations,  desc = "Go to implementations", mode = nv },
 
     { "<leader>wt", dsp.open_neotree,         desc = "Open Neotree" },
     { "<leader>wS", dsp.open_neotree_symbols, desc = "Open Neotree (document symbols)" },
