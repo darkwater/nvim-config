@@ -70,14 +70,19 @@ end
 
 if fn.limited_config() then return end
 
-local telescope = require("telescope.builtin")
-local gitsigns  = require("gitsigns")
-local git       = require("dark-config.git")
+local telescope   = require("telescope.builtin")
+local gitsigns    = require("gitsigns")
+local git         = require("dark-config.git")
+local t_hierarchy = require("telescope-hierarchy")
 
 wk.add {
     { "grt", telescope.lsp_type_definitions, desc = "Go to type definition", mode = nv },
     { "grr", telescope.lsp_references,       desc = "Go to references",      mode = nv },
     { "gri", telescope.lsp_implementations,  desc = "Go to implementations", mode = nv },
+    { "grh", ":Telescope hierarchy<CR>",     desc = "View call hierarchy",   mode = nv },
+    { "gra", vim.lsp.buf.code_action,        desc = "Code action",           mode = nv },
+    { "grn", vim.lsp.buf.rename,             desc = "Rename symbol",         mode = nv },
+    { "grx", vim.lsp.codelens.run,           desc = "Run (code lens)",       mode = nv },
 
     { "<leader>wt", dsp.open_neotree,         desc = "Open Neotree" },
     { "<leader>wS", dsp.open_neotree_symbols, desc = "Open Neotree (document symbols)" },
