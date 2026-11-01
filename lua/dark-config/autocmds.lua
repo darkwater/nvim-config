@@ -38,6 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- format some types of buffers on save
 vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup,
     pattern = { "*.rs", "*.toml" },
     callback = function()
         if fn.any_lsp_supports_method("textDocument/formatting") then

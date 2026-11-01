@@ -3,6 +3,9 @@ local fn = require("dark-config.lib.functions")
 if not fn.limited_config() then
     vim.opt.backup = true
     vim.opt.backupdir = { vim.fn.stdpath("state") .. "/backup//" }
+
+    -- hyprland's hot reload can't deal with vim's 'backup'
+    vim.opt.backupskip:append("/home/*/.config/hypr/*")
 end
 
 -- sign column
